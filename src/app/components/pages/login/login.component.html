@@ -1,0 +1,35 @@
+<!-- <app-header></app-header> -->
+<div class="container">
+    <div class="details">
+        <div class="logo">
+            <img src="newlogo.png" alt="Logo etokisana">
+            <p style="text-align: center;font-style: italic;">"Une liberté unique"</p>
+        </div>
+        <div class="border-title">
+          <div class="title-border"> Connexion</div>
+            
+                <form class="login-form" [formGroup]="loginForm" (ngSubmit)="submit()">
+                    <text-input
+                    [control]="fc.email"
+                    [showErrorsWhen]="isSubmitted"
+                    label="Email">
+                </text-input>
+                <app-password-input
+                [control]="fc.password"
+                [showErrorsWhen]="isSubmitted"
+                label="Mot de passe">
+            </app-password-input>
+            <a routerLink="/request-reset-password"><p>Mot de passe oublié?</p></a>
+            
+            <!-- <div style="display: flex;justify-content: center;"><a href="/forgot-password" style="margin: auto;">Mot de passe oublié?</a></div> -->
+            <div class="buttonContainer">
+                    <app-default-button text="Se connecter" type="submit"></app-default-button>
+                    <a routerLink="/register">
+                        <app-default-button text="S'inscrire" type="submit"></app-default-button>
+                    </a> 
+                    <!-- <app-default-button text="Register" routerLink="/register" type="button"></app-default-button> -->
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

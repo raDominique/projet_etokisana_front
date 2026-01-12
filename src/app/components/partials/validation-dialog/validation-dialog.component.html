@@ -1,0 +1,7 @@
+<h2 mat-dialog-title>{{data.validation}} cet utilisateur</h2>
+<mat-dialog-content><p>Voulez vous changer le statut d'approbation de cet utilisateur?</p></mat-dialog-content>
+<mat-dialog-actions>
+    <button mat-button [mat-dialog-close]>Retour</button>
+    <button mat-button [mat-dialog-close]="false" >Désapprouver</button>
+    <button mat-button [mat-dialog-close]="true" >Approuver</button>
+</mat-dialog-actions>

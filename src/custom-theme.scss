@@ -1,0 +1,65 @@
+
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@use '@angular/material' as mat;
+// Plus imports for other components in your app.
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat.core();
+
+// Define the theme object.
+$etokisana-theme: mat.define-theme((
+  color: (
+    theme-type: light,
+    primary: mat.$azure-palette,
+    tertiary: mat.$blue-palette,
+  ),
+  density: (
+    scale: 0,
+  ),
+));
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+:root {
+  @include mat.all-component-themes($etokisana-theme);
+  --mat-form-field-container-text-line-height: auto;
+  --mat-form-field-container-text-size: 1rem;
+  --mat-form-field-container-text-tracking: 0.031rem;
+  --mat-form-field-container-text-weight: 400;
+  --mat-form-field-subscript-text-line-height: auto;
+  --mat-form-field-subscript-text-size: 0.75rem;
+  --mat-form-field-subscript-text-tracking: 0.025rem;
+  --mat-form-field-container-height: 40px;
+  --mat-form-field-container-width: 100%;
+  --mat-form-field-filled-with-label-container-padding-top: 5%;
+  --mat-form-field-filled-with-label-container-padding-bottom: 5%;
+  --mat-form-field-container-vertical-padding: 10px;
+  --mat-radio-label-text-line-height: 1rem;
+  --mat-radio-label-text-size: 0.75rem;
+  --mat-datepicker-calendar-text-size: 0.75rem;
+  --mat-datepicker-calendar-body-label-text-size: 0.75rem;
+  --mat-datepicker-calendar-body-label-text-weight: 500;
+  --mat-datepicker-calendar-period-button-text-size: 0.75rem;
+  --mat-datepicker-calendar-period-button-text-weight: 500;
+  --mat-datepicker-calendar-header-text-size: 0.75rem;
+  --mat-datepicker-calendar-header-text-weight: 500;
+  --mat-datepicker-calendar-container-shape: 0px;
+  --mat-datepicker-calendar-container-touch-shape: 10px;
+  --mdc-icon-button-state-layer-size: 1.2rem;
+  --mdc-icon-button-icon-size: 1.2rem;
+  --mdc-outlined-text-field-label-text-size: .7rem;
+  --mdc-radio-state-layer-size: 15px;
+  --mat-radio-label-text-line-height: 1rem;
+  --mat-radio-label-text-size: 0.7rem;
+}
+
+// Comment out the line below if you want to use the pre-defined typography utility classes.
+// For more information: https://material.angular.io/guide/typography#using-typography-styles-in-your-application.
+// @include mat.typography-hierarchy($etokisana-theme);
+
+// Comment out the line below if you want to use the deprecated `color` inputs.
+// @include mat.color-variants-backwards-compatibility($etokisana-theme);

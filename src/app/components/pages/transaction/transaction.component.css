@@ -1,0 +1,44 @@
+at-drawer-container{
+    min-height: 100%;
+}
+.left-side{
+    background-color: black;
+    height: 100%;
+    min-height: 100vh;
+    border-radius: 0;
+    width: fit-content;
+    min-width: 150px;
+}
+button{
+    /* width: 100%; */
+    /* border-bottom:1px solid; */
+    border-radius:0.5rem;
+    width: 130px;
+    margin: 5px;
+}
+button.icon,li button{
+    width: 100%;
+    background: none;
+    /* border-bottom:1px solid; */
+    border-radius:0;
+}
+button:focus{
+    width: 100%;
+    background: gray;
+    /* border-bottom:1px solid; */
+    border-radius:0;
+    color: #4591f5;
+}
+.icon-operation{
+    color : #4591f5;
+    font-size: 100px;
+    width: fit-content;
+}
+mat-icon.icon-operation{
+    height: 100px;
+    width: 100px;
+}
+.container-operation{
+    display: flex;
+    justify-content: space-evenly;
+}

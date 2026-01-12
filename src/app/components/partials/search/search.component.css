@@ -1,0 +1,35 @@
+div input{
+    border-radius: 1rem 0 0 1rem;
+    border: none;
+    height: .1rem;
+    width: 20rem;
+    background-color: #f1f1f1;
+    padding: 1.2rem;
+    font-size: .8rem;
+    font-weight: 500;
+    outline: none;
+    margin:.5rem 0rem;
+}
+
+div button{
+    color: grey;
+    height: 2.5rem;
+    width: 5rem;
+    font-size: .8rem;
+    border-radius: 0 1rem 1rem 0;
+    border: none;
+    background-color: rgb(24, 119, 242);
+    color: white;
+    opacity: .8;
+    outline: none;
+}
+app-search{
+    margin:auto;
+}
+mat-hint{
+    font-style: italic;
+    font-size: .6rem;
+}
+.mat-mdc-form-field-icon-suffix [dir=rtl] .mat-mdc-form-field-icon-prefix{
+    padding: 0px !important;
+}

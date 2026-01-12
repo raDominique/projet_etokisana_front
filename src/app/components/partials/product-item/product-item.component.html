@@ -1,0 +1,10 @@
+<div class="product-container">
+    <div class="product-image-container">
+        <img src="{{imageUrl}}" alt="{{productName}}">
+    </div>
+    <div class="product-description-container">
+        <h4> {{productName}} </h4>
+        <!-- <p> {{formatPrice(productPrice,'AR')}} </p> -->
+        <p> {{productPrice| currency:'AR':'symbol':'4.2-2'}} </p>
+    </div>
+</div>

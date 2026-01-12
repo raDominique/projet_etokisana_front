@@ -1,0 +1,113 @@
+<app-header></app-header>
+<div class="container">
+    <div class="inner-container">
+        <h3>Ajouter un produit</h3>
+        <div class="options">
+            <form class="register-form-style" [formGroup]="addProductForm"  (ngSubmit)="submit()">
+                <div class="client-register">
+                    <div class="row">
+                        <div class="category">
+                            <mat-form-field appearance="outline">
+                                <mat-label>Category</mat-label>
+                                <input type="text" 
+                                placeholder="Category"
+                                matInput 
+                                [formControl]="catCtrl"
+                                [matAutocomplete]="auto">
+                                <mat-autocomplete #auto="matAutocomplete">
+                                    @for (category of filteredCat | async; track category.cpc){
+                                        <button class="autoCompleteCPC" (click)="setCPC(category.cpc,category.designation)" >
+                                            <mat-option [value]="category.designation" >
+                                                {{category.designation}}
+                                            </mat-option>
+                                        </button>
+                                        }
+                                </mat-autocomplete>
+                            </mat-form-field>
+                        </div>
+                        <div class="cpc">
+                            <mat-form-field appearance="outline">
+                                <mat-label style="color: black;">CPC</mat-label>
+                                <input matInput type="text" [(ngModel)]="selectedCode" [ngModelOptions]="{standalone:true}" disabled="true">
+                            </mat-form-field>
+                        </div>      
+                    </div>
+                <!-- Champ du nom du produit -->
+                <text-input
+                [control]="fc.productName"
+                [showErrorsWhen]="isSubmitted"
+                label="Nom spécifique">
+                </text-input>
+                <app-textarea
+                [control]="fc.productDescription"
+                [showErrorsWhen]="isSubmitted"
+                label="Description">
+                </app-textarea>
+                <!-- Champ Spécificité du produit -->
+                <div class="row">
+                    <!-- Champ du nom du produit -->
+
+                </div>
+                <div class="row">
+                    <!-- Champ Poids du produit -->
+                    <text-input
+                    [control]="fc.productPoids"
+                    [showErrorsWhen]="isSubmitted"
+                    label="Poids (kg)">
+                    </text-input>
+                    <!-- Champ Volume du produit -->
+                    <text-input
+                    [control]="fc.productVolume"
+                    [showErrorsWhen]="isSubmitted"
+                    label="Volume (L)"> 
+                    </text-input>
+                </div>
+                <div class="row">
+                    <!-- Champ Largeur du produit -->
+                    <text-input
+                    [control]="fc.productLargeur"
+                    [showErrorsWhen]="isSubmitted"
+                    label="Largeur (m)"> 
+                    </text-input>
+                    <!-- Champ Longueur du produit -->
+                    <text-input
+                    [control]="fc.productLongueur"
+                    [showErrorsWhen]="isSubmitted"
+                    label="Longueur (m)">
+                    </text-input>
+                </div>
+                <!-- Champ Hauteur du produit -->
+                    <text-input
+                    [control]="fc.productHauteur"
+                    [showErrorsWhen]="isSubmitted"
+                    label="Hauteur (m)">
+                    </text-input>  
+                
+                </div>
+                <!-- Section contenant les boutons -->
+                <div class="buttonContainer">
+                    <app-default-button text="Valider" routerLink="/user-products" type="submit"></app-default-button>
+                    <app-default-button text="Annuler" routerLink="/user-products" type="button"></app-default-button>
+                </div>
+            </form>        
+            <div class="file-upload">
+                <button class="upload-btn" (click)="productUpload.click()">
+                    <input type="file"  name="file" multiple="" class="file-input" (change)="onFileSelected($event)" #productUpload>
+                    <!-- <img *ngIf="!firstImage" src="default.jpg" height="500px" width="500px"><br> -->
+                    <!-- <img *ngIf="firstImage" [src]="firstImage" height="500px" width="500px"><br> -->
+                    <!-- <img @for displayImage of productImage [src]="displayImage[0]" height="500px" width="500px"><br> -->
+                    <img *ngIf="productImage[0]" [src]="productImage[0]" height="500px" width="500px"><br>
+                    <img *ngIf="!productImage[0]" src="default.jpg" height="500px" width="500px"><br>
+                    <div class="row">
+                        <img *ngIf="productImage[1]" [src]="productImage[1]" height="50px" width="50px"><br>
+                        <img *ngIf="productImage[2]" [src]="productImage[2]" height="50px" width="50px"><br>
+                        <img *ngIf="productImage[3]" [src]="productImage[3]" height="50px" width="50px"><br>
+                    </div>
+
+                    {{ fileName || "Photo(s) du produit"}}
+                    <mat-icon >Choisir un fichier</mat-icon>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

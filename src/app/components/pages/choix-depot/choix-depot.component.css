@@ -1,0 +1,24 @@
+ul{
+    width: 70%;
+}
+li{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+button{
+    width: fit-content;
+    margin: 0;
+}
+.depot-card{
+    width: 100%;
+    border: 1px gray solid;
+    border-radius : 20px;
+    padding : 10px;
+    margin : 2.5px;
+    display: flex;
+    justify-content: space-between;
+}
+tr{
+    cursor: default;
+}

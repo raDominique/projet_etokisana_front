@@ -1,0 +1,426 @@
+@use '@angular/material' as mat;
+
+body{
+  font-size: 1rem;
+    margin : 0px;
+  }
+  app-sidebar{
+      float: left;
+      margin-right: 1rem;
+      padding-right: 2rem; 
+      border-right: 1px solid black;
+  }
+  div.main{
+      width: 90%;
+      margin: auto;
+  }
+  .content{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    padding:5px;
+  }
+ .mat-mdc-row{
+    border-radius: 20px;
+  }
+  .mat-mdc
+  .row{
+    width: 100%;
+  }
+  .row{
+    display: flex;
+    align-items: flex-start;
+  }
+  .container{
+    margin: auto;
+    /* max-width: 1280px; */
+    min-height: 100%;
+  }
+  .mat-drawer-container{
+    min-height: 100%;
+  }
+  .left-side{
+    width: 70%;
+  }
+  .right-side{
+    width: 29%;
+  }
+  .inner-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 10%;
+    min-height: 100%;
+    margin:auto;
+  }
+  .changeQte{
+    font-size: 0.5em;
+    padding: 3px;
+    height: 1rem;
+    width: 1rem;
+    border-radius: 3px;
+    margin: 0;
+  }
+  
+  .mat-mdc-text-field-wrapper{
+    background-color: #ffffff;
+
+  }
+
+  .input{
+     /* width: 92%; */
+    border-radius: 0.5rem;
+    border: none;
+    height: 0.1rem;
+    padding: 1rem;
+    font-size: .8rem;
+    font-weight: 500;
+    outline: none;
+    margin: 0.3rem 0.3rem;
+    width: 45%;
+  
+  }
+  app-header{
+    font-size: 0.8rem;
+  }
+  
+  #gridContainer{
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-template-areas: "g1 g2";
+    width:100%
+  }
+  #listGrid{
+    height: fit-content;
+    /* overflow: scroll; */
+  }
+  #cartGrid{
+    grid-area: "g2";
+    display: flex;
+    flex-direction: column;
+    margin-left: 1rem;
+    /* max-height: 5vh; */
+  }
+  
+  .periodesInput{
+      padding-top: .6rem;
+  }
+  div.periodes div.periodesInput div{
+      margin: .5rem 0rem;
+  }
+  /** header **/
+  h3{
+    background-color: rgba(123, 180, 255, 0);
+    color:rgb(104, 182, 255);
+    border-radius:5px 5px 0px 0px;
+    margin-bottom:0;
+    text-align: center;
+    padding:0.5rem 0;
+    text-transform: uppercase;
+  }
+  h1{
+    margin: auto;
+    color : rgba(24, 119, 242);
+  }
+  .cart{
+    padding:0rem .5rem 0rem .5rem;
+    width: 100%;
+  }
+  .cart td{
+    font-size: .8rem;
+    width: 100%;
+  }
+  .articleListe{
+    padding:0rem .5rem 0rem .5rem;
+    width: 100%;
+  }
+  
+  /*  Button */
+  div button{
+    color: grey;
+    /* height: 2.5rem;
+    width: 5rem; */
+    font-size: .8rem;
+    border-radius: 0.5rem;
+    border: none;
+    background-color: rgb(24, 119, 242);
+    color: white;
+    opacity: .8;
+    outline: none;
+  }
+  .material-icons{
+    font-size: 14px;
+  }
+  .mat-icon{
+    height: auto;
+    width: auto;
+  }
+  button{
+    background-color: rgb(24, 119, 242);
+    color: white;
+    /* height: 2.5rem; */
+    padding: 5px;
+    border: none;
+    outline: none;
+    font-weight: 100;
+    border-radius: 0.5rem;
+    margin:.3rem auto;
+    opacity:0.8;
+    width: fit-content;
+    outline: none;
+  }
+  button:hover{
+    cursor: pointer;
+    opacity: 1;
+    /* background: blue;
+    color: wheat; */
+  }
+  .itemQuantityButton button{
+    display: flex;
+    flex-direction: row;
+  }
+  .buttons{
+    padding: .5rem;
+  }
+  button.main{
+    padding: 1rem;
+    margin: .25rem;
+    border-radius:10%;
+  }
+  button.main{
+    color: grey;
+    height: 3rem;
+    width: 5rem;
+    font-size: 1rem;
+    border-radius: 10rem;
+    border: none;
+    background-color: rgba(24, 119, 242);
+    color: white;
+    opacity: .8;
+    outline: none;
+  }
+  button:hover{
+    opacity: 1;
+    cursor: pointer;
+  }
+  input:focus{
+    outline: none;
+  }
+  
+  /** Titre avec bordure **/
+  .border-title{
+    border: 1px solid rgb(216, 237, 255);
+    border-radius: 10px;
+    padding: 3rem;
+    padding-top: 1.5rem;
+    margin: 1.25rem 0.25rem 0 0.25rem;
+    /* display: flex; */
+    /* justify-content: center; */
+    align-content: space-between;
+  }
+  div.title-border{
+    margin-top:-2rem;
+    background-color: white;
+    padding: 0px 10px;
+    text-align: center;
+    position: absolute;
+    text-transform: uppercase;
+    color:rgba(24, 119, 242);
+  }
+  
+  /* TABLES */
+  .table-container{
+    display: flex;
+  }
+  table{
+    border-collapse: collapse;
+    margin:auto;
+    width: 100%;
+  }
+  tr{
+    border-radius: 20px ;
+    /* cursor:pointer; */
+    /* border:1px solid black; */
+  }
+  td{
+    border:none;
+    /* padding-left: 10px; */
+    padding: 3px 10px;
+  }
+  .tableHeader{
+    position : sticky !important;
+    top : -1px;
+    background-color : rgb(160, 161, 168);
+    color : white;
+    cursor : default;
+    font-size : 1.2rem;
+    padding : 10px;
+    border: none;
+    height: fit-content;
+  }
+  .tableHeader:hover{
+    background-color : rgb(160, 161, 168)  !important;
+    color : white !important;
+    cursor : default;
+    font-size : 1.2rem;
+    padding : 10px;
+    border: none;
+  }
+  .tableHeader td {
+    text-align: center;
+    font-weight: bold;
+    padding: 0;
+  }
+  .table-list{
+    float: inline-start;
+  }
+  .tableRow{
+    grid-template-columns: 70% 10% 20%;
+    grid-template-areas: "d1 d2 d3";
+    border : 0.5px solid rgb(209, 209, 209);
+    box-shadow: 0px 0px 2px #ebebeb;
+    transition: 0.5 ease ;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: .8em;
+  }
+  .tableRow:hover{
+    border : 0.5px solid rgb(209, 209, 209);
+    box-shadow: 0px 0px 5px #9dacff;
+    border-radius: 0;
+    background-color: aliceblue;
+    /* color:white; */
+  }
+  
+  /** input Guide**/
+  .input-guide{
+    margin: 0;
+    font-size: small;
+    color: red;
+    font-style: italic;
+  }
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.wrapper{
+  width: 100%;
+}
+.mat-mdc-icon-button .mat-mdc-button-touch-target {
+  position: absolute;
+  top: 10%;
+  height: 20px!important;
+  left: 10%;
+  width: 20px!important;
+  transform: translate(-50%, -50%);
+  display: var(--mat-icon-button-touch-target-display);
+}
+.mat-mdc-form-field-icon-suffix, [dir=rtl] .mat-mdc-form-field-icon-prefix {
+  padding: 0px 22px 13px 0px ;
+}
+.mat-icons{
+  height: auto !important;
+}
+.mat-mdc-radio-button .mdc-radio__native-control  .mat-mdc-radio-button .mdc-radio{
+  height: 15px !important;
+  width: 15px !important;
+}
+.mat-mdc-radio-button .mdc-radio__background,.mat-mdc-radio-button .mat-accent .mat-mdc-radio-checked {
+  height: 15px !important;
+  width: 15px !important;
+}
+.mat-mdc-radio-button .mdc-radio{
+  height: 15px !important;
+  width: 15px !important;
+}
+.mat-mdc-radio-touch-target{
+  height: 15px !important;
+  width: 15px !important;
+  right: 5px;
+}
+/* .mdc-radio__inner-circle{
+  left: -1.05px !important;
+  top: -2.0px !important;
+} */
+.mat-internal-form-field>label{
+  padding-right: 10px !important;
+  width: 100%;
+}
+.mat-mdc-radio-button .mdc-radio__inner-circle{
+  border-width: 7px !important;
+}
+.radio-gender{
+  max-height: 1.5rem;
+  margin: auto auto 15px auto;
+}
+ul{
+  list-style: none;
+}
+.mat-horizontal-stepper-wrapper, .mat-vertical-stepper-wrapper{
+  width: 100%;
+  background-color: white;
+}
+form{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 100%;
+}
+mat-form-field{
+  width: 100%;
+}
+.iti--allow-dropdown input.iti__tel-input, .iti--allow-dropdown input.iti__tel-input[type=text], .iti--allow-dropdown input.iti__tel-input[type=tel], .iti--show-selected-dial-code input.iti__tel-input, .iti--show-selected-dial-code input.iti__tel-input[type=text], .iti--show-selected-dial-code input.iti__tel-input[type=tel].mat-mdc-text-field-wrapper{
+  background: none;
+  border: none;
+  max-width: 12rem;
+}
+.iti--allow-dropdown .iti__flag-container, .iti--show-selected-dial-code .iti__flag-container{
+  left:-17px !important;
+}
+.iti.separate-dial-code[_ngcontent-ng-c2444536406] input[_ngcontent-ng-c2444536406], .iti.separate-dial-code.iti--allow-dropdown.iti-sdc-2[_ngcontent-ng-c2444536406] input[_ngcontent-ng-c2444536406], .iti.separate-dial-code.iti--allow-dropdown.iti-sdc-3[_ngcontent-ng-c2444536406] input[_ngcontent-ng-c2444536406], .iti.separate-dial-code.iti--allow-dropdown.iti-sdc-4[_ngcontent-ng-c2444536406] input[_ngcontent-ng-c2444536406]{
+  padding-left: 74px !important;
+}
+button{
+  font-size: 3rem;
+  padding : 10px;
+}
+input-validation{
+    display: flex;
+    justify-content: center;
+    align-items:center ;
+    top:0;
+    right: 1rem;
+    width: 12rem;
+    color:red;
+    font-size : small;
+}
+
+app-default-button{
+  width: 100%;
+}
+:root{
+  --mdc-outline-tel-form-background: #ffffff;
+  --mdc-tel-form-placeholder-color:  #ccc;
+  --mdc-tel-form-icon-color: #fd0000;
+  --mdc-outlined-text-field-outline-color: #d1d1d1;
+  --mdc-outlined-text-field-outline-width: 2px;
+}
+.number-form-field{
+  border:none;
+}
+/* boutonMenu{
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-right: 1rem;
+} */
+button{
+    /* width: 130px; */
+    margin: 5px;
+}
+.mat-mdc-form-field-infix{
+    padding-top:  var(--mat-form-field-container-vertical-padding) !important ;
+}

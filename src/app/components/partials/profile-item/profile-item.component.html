@@ -1,0 +1,18 @@
+<div class="item">
+    <p class="left-side">{{label}}</p>
+    @if (modifmode) {
+    <text-input
+        [control]="control"
+        [showErrorsWhen]="isSubmitted"
+        [label]="label"
+        [placeholder]="placeholder"
+        [defaultValue]="value"
+        >
+    </text-input>
+    <button class="action" (click)="validateModif()"><mat-icon>check</mat-icon></button>
+    <button class="action" (click)="changeModifMode()"><mat-icon>close</mat-icon></button>
+    }@else {
+        <button (click)="changeModifMode()" class="right-side"><mat-icon class="modifIcon">edit</mat-icon> {{value}}  </button>
+    }
+    
+</div>

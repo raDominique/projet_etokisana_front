@@ -1,0 +1,23 @@
+.head-content{
+    width: 100%;
+}
+.content{
+    display: flex;
+    flex-direction: column;
+}
+button{
+    background-color: rgb(64, 124, 255);
+    border:1px solid rgb(237, 237, 253);
+}
+span.verified{
+    border:1px solid green;
+    color:green;
+    border-radius: 50%;
+    padding: 5px 10px;
+}
+span.pending{
+    border:1px solid rgb(116, 116, 116);
+    color:rgb(116, 116, 116);
+    border-radius: 50%;
+    padding: 5px 10px;
+}

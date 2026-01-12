@@ -1,0 +1,135 @@
+
+<app-header></app-header>
+<!-- <div class="slider">
+    <div class="content-container">
+        <h1>Acheter différemment</h1>
+        <app-default-button text="S'INSCRIRE" [fontSizeRem]=2 [widthPer]=30 routerLink="/register"></app-default-button>
+        <a routerLink="/login" style="margin: 0 auto;font-size:large;color:rgb(0, 0, 0)"> J'ai déjà un compte</a>
+    </div>
+</div> -->
+<div class="container">
+<div class="inner-container">
+  <div class="row">
+    <div class="border-title">
+    <div class="title-border">
+      Choix de produit
+    </div>
+  
+    @for (item of productList; track $index) {
+      <mat-card class="example-card" appearance="outlined">
+        <mat-card-header>
+          <div mat-card-avatar class="example-header-image"></div>
+          <!-- <mat-card-title>{{ item.productName }} </mat-card-title> -->
+          <!-- <mat-card-subtitle>{{ item.prix }}</mat-card-subtitle> -->
+        </mat-card-header>
+        
+        <img  class="card-image" mat-card-image [src]="item.productImage[0]" alt="Photo of a Shiba Inu">
+        <mat-card-content>
+          <p>
+            {{ item.productName }} <br>
+            {{ item.codeCPC }}
+          </p>
+          <h4>{{item.prix}} Ar</h4>
+        </mat-card-content>
+        <mat-card-actions>
+          <!-- <button matButton (click)="voirProduit(item.productId,item.depotId)">Voir</button>-->
+           <button matButton (click)="voirProduit(item.productId,item.depotId)">Voir</button>
+          <!-- <button matButton (click)="acheter(item.itemId,item.productId)">Acheter</button> -->
+        </mat-card-actions>
+      </mat-card>
+    }
+  </div>
+  <!-- <div class="border-title">
+    <div class="title-border">Panier</div>
+    @if (cart.items.length>0) {
+      <table>
+        <tr>
+          <td>Aperçu</td>
+          <td>Libellé</td>
+          <td>P.U</td>
+          <td>Qté</td>
+          <td>Montant</td>
+        </tr>
+      
+      @for (item of cart.items; track $index) { -->
+        <!-- <div class="row item" style="border:1px solid rgb(168, 168, 168);border-radius: 20px;"> -->
+          <!-- <tr>
+            <td><img class="miniature" [src]="item.productImage" alt=""></td>
+            <td><p>{{item.productName}}</p></td>
+            <td><p>{{item.price}}</p></td>
+            <td><p>{{item.quantity}}  -->
+              <!-- <button class="changeQte" (click)="qtUp(item.quantity)">➕</button>
+              <button class="changeQte" (click)="qtDown(item.quantity)">➖</button></p> -->
+            <!-- </td>
+            <td><p>{{item.montant}}</p></td>
+          </tr> -->
+          
+        <!-- </div> -->
+        
+      <!-- }</table>
+      <button (click)="clearCart()" >Vider</button>
+    }@else {
+      <h5>Panier vide</h5>
+    }
+    
+     
+  </div> -->
+  </div>
+  
+</div>
+  <!-- <div class="inner-container">
+    <div class="main">
+      <div class="border-title">
+        <div class="title-border">Filtre</div>
+        
+          
+      </div> 
+      <div id="gridContainer">
+        <div id="listGrid">
+          <div class="border-title">
+            <div class="title-border"> Articles</div> 
+           
+          </div>
+        </div>
+        <div id="cartGrid">
+          
+          <div class="border-title">
+            <div class="title-border"> Panier</div> 
+            
+          </div> 
+            <div class="buttonContainer" *ngIf="!isCartEmpty"> -->
+              <!-- <app-default-button text="Payer" type="submit" (click)="submit()"></app-default-button>
+              <app-default-button text="Vider le panier" type="button" (click)="resetCart()"></app-default-button> -->
+            <!-- </div> -->
+       <!-- </div>
+      </div>
+      <div class="column">
+          <h3>Liste des articles<span>📃</span></h3>
+          <div class="overflow full-width">
+            <table>
+              <tr class="tableHeader">
+                <td>Aperçu</td>
+                <td>CPC</td>
+                <td>Catégories</td>
+                <td>Désignation</td>
+                <td>Prix Unitaire (Ar)</td>
+                <td>Quantité(Unité)</td>
+                <td>Montant(Ar)</td>
+              </tr>
+              <tr>
+                @for (product of productList; track $index) {
+                  <td ><img [src]="product.CartItemProduct.productImage[0]" alt=""></td>
+                  <td >{{product.CartItemProduct.codeCPC}}</td>
+                  <td >{{product.CartItemProduct.productCategory}} </td>
+                  <td >{{product.CartItemProduct.productName }} </td>
+                  <td> {{product.CartItemPrice}} </td>
+                  <td> {{product.CartItemQuantity}} </td>
+                  <td> {{product.CartItemMontant }} </td>
+                }
+              </tr>
+            </table>
+          </div>
+        </div>
+      </div>
+  </div>-->
+</div>

@@ -1,0 +1,231 @@
+.idDocumentUpload{
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 50px;
+    width: 100%;
+}
+.recto,.verso{
+    width: 100%;
+    margin: 5px;
+}
+.inner-container{
+    display : flex;
+    justify-content: space-around;
+    /* flex-wrap: wrap; */
+}
+.no-background{
+    background: none;
+}
+/* .wrapper{
+    display: grid;
+    /* grid-template-columns: repeat(3, 1fr); */
+    /* grid-template-rows: 100px 100px;
+    grid-template-areas:
+    "a b"
+    "a b";
+} */ 
+
+.mat-mdc-tab-group{
+    min-width: max-content; 
+}
+.row.content{
+    padding : 2px;
+}
+.left{
+    grid-area: a;
+}
+.right{
+    grid-area: b;
+}
+h5{
+    padding:0;
+    margin-top: 40px;;
+    color:grey;
+    font-weight: normal;
+}
+.avatar{
+    max-width: 150px;
+    max-height: 150px;
+    border-radius: 50%;
+    /* margin: 20px; */
+}
+.form-line{
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+.file-input{
+    display: none;
+}
+.client-register{
+    /* width: 40%; */
+    display: flex;
+    /* flex-wrap: wrap; */
+    /* justify-content: center; */
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+}
+.rightSide{
+    width: 40%;
+}
+.row{
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    flex-wrap: nowrap;
+    width: 100%;
+}
+text-input, app-password-input, date-input{
+    width: 100%;
+}
+[_nghost-ng-c734527743] section[_ngcontent-ng-c734527743] .tel-form[_ngcontent-ng-c734527743] {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    border-radius: 8px;
+    border: 1px solid #d1d1d1;
+    background-color: #ffffff ! important;
+}
+/* .seller{
+    width: 40%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+
+    align-content: center;
+} */
+.register-form-style{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: space-evenly;
+    /* margin: auto 10%; */
+}
+.buttonContainer{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: end;
+    align-content: space-evenly;
+    align-items: center;
+}
+.buttonContainer.row{
+    margin-right : 0;
+}
+.options{
+    /* margin-top: 20px; */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+.focus-content{
+    width: 50%;
+}
+mat-checkbox{
+    margin : auto 0;
+}
+.mat-mdc-form-field-icon-suffix, [dir=rtl] .mat-mdc-form-field-icon-prefix {
+    padding: 0px 22px 13px 0px !important;
+}
+/* mat-datepicker-toggle{
+    margin: 0 -19px -10px 0;
+} */
+.seller-file{
+    width: 100%;
+ }
+ngx-intl-tel-input:last-child{
+    background: none;
+    border: none;
+} 
+input-container{
+    width: 100%;
+}
+input#phone.iti__tel-input.custom.ng-untouched.ng-pristine.ng-valid{
+    background: none !important;
+    border: none !important;
+ }
+ .mat-icon{
+    height: fit-content;
+    width: fit-content;
+ }
+ .final-row{
+    
+    float:right;
+ }
+ button{
+    margin: 10px;
+    width: 150px;
+    height: 40px;
+ }
+ .upload-btn{
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    margin: auto;
+    /* margin-left: 0;
+    margin-right: 0; */
+}
+.localisation{
+    align-content: center;
+}
+.mat-mdc-form-field{
+    font-size: 1.2rem !important;
+    min-height: 10px;
+    padding:0px;
+}
+.mat-mdc-form-field mat-label{
+    font-size: 1.2rem;
+}
+.mat-mdc-form-field-infix{
+    height: 15px;
+    min-height: 10px;
+    padding:0px;
+}
+.mdc-text-field--outlined{
+    padding: 0;
+}
+input#phone._iti__tel-input.custom{
+    font-size: 1.2rem;
+}
+.back-forward{
+    display: flex;
+    justify-content: space-between;
+}
+.end{
+    flex-wrap: wrap;
+    justify-content: end;
+}
+img{
+    /* margin-top: 50px; */
+    width: 100%;
+}
+/* button{
+    width: 100%;
+} */
+
+.upload-document-btn{
+    width:100%;
+    max-height: 50vh;
+}
+.mat-mdc-form-field-infix{
+    padding-top: 0 !important;
+}
+/* .tel-form{
+    width: 98%;
+} */
+ngx-material-intl-tel-input{
+    width: 98%;
+    padding: 0px 5px;
+}

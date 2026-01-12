@@ -1,0 +1,66 @@
+<app-side-bar></app-side-bar>
+<div class="container">
+    <div class="content">
+        <h3>Utilisateurs en attente de validation</h3>
+        <table mat-table [dataSource]="usersNewList" class="mat-elevation-z8">
+
+      <!--- Note that these columns can be defined in any order.
+            The actual rendered columns are set as a property on the row definition" -->
+      
+            <ng-container matColumnDef="Photo">
+              <th mat-header-cell *matHeaderCellDef> Photo </th>
+              <td mat-cell *matCellDef="let element"><ngx-avatars [src]="element.userImage"></ngx-avatars></td>
+            </ng-container>
+
+            <ng-container matColumnDef="ID">
+              <th mat-header-cell *matHeaderCellDef> ID </th>
+              <td mat-cell *matCellDef="let element"> {{element.userId | uppercase}}</td>
+            </ng-container>
+
+            <ng-container matColumnDef="Nom">
+              <th mat-header-cell *matHeaderCellDef> Nom </th>
+              <td mat-cell *matCellDef="let element"> {{element.userName }}</td>
+            </ng-container>
+          
+            
+            <ng-container matColumnDef="Prénoms">
+              <th mat-header-cell *matHeaderCellDef> Prénoms </th>
+              <td mat-cell *matCellDef="let element"> {{ element.userFirstname }} </td>
+            </ng-container>
+          
+           
+            <ng-container matColumnDef="Type">
+              <th mat-header-cell *matHeaderCellDef> Type </th>
+              <td mat-cell *matCellDef="let element"> {{element.userType}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="Date">
+              <th mat-header-cell *matHeaderCellDef> Inscription </th>
+              <td mat-cell *matCellDef="let element"> {{element.createdAt | date}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="Email">
+              <th mat-header-cell *matHeaderCellDef> Email </th>
+              <!-- <td mat-cell *matCellDef="let element"> <mat-checkbox [checked]="element.userEmail"></mat-checkbox> </td> -->
+              <td mat-cell *matCellDef="let element"> {{element.userEmail}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="Document">
+                <th mat-header-cell *matHeaderCellDef> Document </th>
+                <td mat-cell *matCellDef="let element"><img src="{{element.userDocumentId}}"/> </td>
+            </ng-container>
+
+            <ng-container matColumnDef="Action">
+              <th mat-header-cell *matHeaderCellDef> Action </th>
+              <td mat-cell *matCellDef="let element"> 
+                <button (click)="CheckUser(element._id)"> <mat-icon>visibility</mat-icon></button>
+                <button (click)="deleteUser(element._id)" style="background-color: rgb(66, 0, 0);"> <mat-icon>delete</mat-icon></button></td>
+            </ng-container>
+
+            
+          
+            <tr mat-header-row *matHeaderRowDef="usersTableColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: usersTableColumns;"></tr>
+          </table>
+    </div>
+</div>

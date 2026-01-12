@@ -1,0 +1,116 @@
+<app-header></app-header>
+<div class="container">
+  <div class="inner-container">
+  <div class="row">
+    <button style="width: 21rem;" (click)="backButton()">Retour</button>
+  </div>
+  <div class="row">
+  <div class="border-title left-side">
+          <div class="title-border"> Mes Sites</div>
+    
+    <table mat-table [dataSource]="sites" class="mat-elevation-z8">
+
+        <!--- Note that these columns can be defined in any order.
+              The actual rendered columns are set as a property on the row definition" -->
+      
+        <ng-container matColumnDef="Nom du Site">
+          <th mat-header-cell *matHeaderCellDef> Nom </th>
+          <td mat-cell *matCellDef="let element">{{element.siteName }}"</td>
+        </ng-container>
+    
+    
+        <!-- Position Column -->
+        <ng-container matColumnDef="Adresse">
+          <th mat-header-cell *matHeaderCellDef> Adresse </th>
+          <td mat-cell *matCellDef="let element"> {{element.siteAddress}} </td>
+        </ng-container>
+      
+        <!-- Name Column -->
+        <ng-container matColumnDef="Latitude">
+          <th mat-header-cell *matHeaderCellDef> Latitude </th>
+          <td mat-cell *matCellDef="let element"> {{element.siteLat}} </td>
+        </ng-container>
+      
+        <!-- Weight Column -->
+        <ng-container matColumnDef="Longitude">
+          <th mat-header-cell *matHeaderCellDef> Longitude </th>
+          <td mat-cell *matCellDef="let element"> {{element.siteLng}} </td>
+        </ng-container>
+    
+        <ng-container matColumnDef="Action">
+          <th mat-header-cell *matHeaderCellDef> Action </th>
+          <td mat-cell *matCellDef="let element" style="display: flex;justify-content: center;align-items: stretch;"> 
+              <!-- <button (click)="VoirMonStock(element._id)" style="font-size: large;">Stock</button> -->
+              <button (click)="setDataToModify(element._id)"> <mat-icon>brush</mat-icon></button>
+              <button (click)="deleteSite(element._id)"> <mat-icon>delete</mat-icon></button>
+              <!-- <a routerLink="update/{{element._id}}"><button> <mat-icon>brush</mat-icon></button></a> -->
+            <!-- <button (click)="deleteProduct(element._id)"> <mat-icon>delete</mat-icon></button>-->
+            </td> 
+        </ng-container>
+      
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+</div>
+    
+    <div class="border-title rightSide">
+          <div class="title-border"> 
+            @if (!update) {Ajouter un site}@else{Modifier un site}</div>
+    <form class="userSite-form-style" [formGroup]="addSiteForm"  (ngSubmit)="submit()">
+      <div class="row">
+        <div class="client-register">
+          <div class="row">
+            <text-input
+            [control]="fc.siteName"
+            [showErrorsWhen]="isSubmitted"
+            label="Nom du Site">
+            </text-input>
+            <text-input
+            [control]="fc.siteAddress"
+            [showErrorsWhen]="isSubmitted"
+            label="Adresse">
+            </text-input>
+          </div>
+          <div class="row">
+            <text-input
+            [control]="fc.siteLng"
+            [showErrorsWhen]="isSubmitted"
+            label="Longitude"
+            ></text-input>
+            <text-input
+            [control]="fc.siteLat"
+            [showErrorsWhen]="isSubmitted"
+            label="Latitude"
+            ></text-input>
+          </div>
+          <div class="row">
+            <div class="buttonContainer">
+              @if (update) {
+                <app-default-button text ="Centrer la carte" (onClick)="refreshMapMarker()" type="button"></app-default-button>
+              }
+              <app-default-button text="Valider" type="submit"></app-default-button>
+              <!-- <app-default-button text="Annuler" routerLink="/user-site" type="button"></app-default-button> -->
+            </div>
+          </div>
+        </div>
+        </div>
+      </form>    
+      <div class="map">
+        <google-map height="50vh"
+          max-width="50vh"
+          width="100%"
+          min-width="50vh"
+          [center]="center"
+          [zoom]="6"
+          (mapClick)="moveMap($event)"
+          >
+          <!-- (mapMousemove)="move($event)"  -->
+          <!-- *ngFor="let position of markerLatLong" -->
+          <map-marker 
+        [position]="position"></map-marker>
+        </google-map></div>
+    </div>
+    </div>
+</div>
+    
+</div>

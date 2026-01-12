@@ -1,0 +1,86 @@
+<header>
+    <div class="container">
+        <div class="header-top">
+            <!-- <div class="logo"><a routerLink="/"><img src="newlogo.png" alt="Logo etokisana"></a></div> -->
+            <!-- <div class="search-bar"> Recherche</div> -->
+             <!-- <app-search></app-search> -->
+              @if (!isLoged) {
+                <nav class="right-nav">
+                    <ul>
+                        <!-- <li><a routerLink="/home" class="register-btn">Boutique</a></li> -->
+                        <li><a routerLink="/register" class="register-btn">S'inscrire</a></li>
+                        <li><a routerLink="/login" class="login-btn">Se Connecter</a></li>
+                    </ul>
+                </nav>
+              }@else{
+                <nav class="right-nav">
+                    <ul>
+                        <li>
+                            <a routerLink="/home" class="solde-btn">
+                                Boutique
+                            </a>
+                        </li>
+                        <li>
+                            <a routerLink="/transactions" class="solde-btn">
+                                Solde : <strong>{{user.userTotalSolde}}</strong> MGA
+                            </a>
+                        </li>
+                        <li>
+                            <button matButton [matMenuTriggerFor]="notificationMenu" (click)="resestNotificationBadge()">
+                                @if (notificaitonTotal>0) {
+                                    <mat-icon class="icon-bell"  [matBadge]="notificaitonTotal">notifications_active</mat-icon>
+                                }@else {
+                                    <mat-icon class="icon-bell" >notifications</mat-icon>
+                                }
+                            </button>
+                            <mat-menu #notificationMenu="matMenu" xPosition="before">
+                            <!-- @if (notificaitonTotal>0) { -->
+                            <div class="row">
+                                <div class="part"><button (click)="changeTag('Tout')">Tout</button></div>
+                                <div class="part"><button (click)="changeTag('Non lues')">Non lues</button></div>
+                            </div> 
+                            @if(tag ==  'Tout'){
+                                @for (notification of notifications; track $index) {
+                                    <button mat-menu-item style="text-decoration: none;background: none;" (click)="openNotificationDialog(notification.title,notification.message,null,false,notification._id)">
+                                        <span class="notif-title">{{ notification.title }}@if (notification.state == "new") {<span class="new">new</span>  }</span><br>
+                                        <span class="notif-text">{{ notification.message | truncate:50}}</span>                                        
+                                    </button>
+                                }
+                            }@else{
+                                @for (notification of notifications; track $index) {
+                                    <button mat-menu-item style="text-decoration: none;background: none;" (click)="openNotificationDialog(notification.title,notification.message,null,false,notification._id)">
+                                        <span class="notif-title">{{ notification.title }}</span><br>
+                                        <span class="notif-text">{{ notification.message | truncate:50}}</span>                                        
+                                    </button>
+                                }
+                            }
+                                
+                            <!-- } -->
+                            </mat-menu>
+                            
+                        </li>
+
+                        <button class="profil-btn" matButton [matMenuTriggerFor]="profileMenu"><ngx-avatars size="30" [src]="user.userImage"></ngx-avatars></button>
+                            <mat-menu #profileMenu="matMenu" xPosition="before">
+                                <a mat-menu-item style="text-decoration: none;color:black;font-size: larger;" routerLink="/client-area">
+                                    <ngx-avatars size="50" [src]="user.userImage"></ngx-avatars> <br>
+                                    {{user.userName}} {{user.userFirstname}}
+                                </a>
+                                <a mat-menu-item style="text-decoration: none;color:black;font-size: larger;" routerLink="/client-profile">Mon compte</a>
+                                @if (user.userValidated) {
+                                    <a mat-menu-item style="text-decoration: none;color:black;font-size: larger;" routerLink="/user-products">Mes produits</a>
+                                    <a mat-menu-item style="text-decoration: none;color:black;font-size: larger;" routerLink="/transactions">Mes transactions</a>
+                                    <a mat-menu-item style="text-decoration: none;color:black;font-size: larger;" routerLink="/user-site">Mes sites</a>
+                                }
+                                
+                                @if (user.userAccess == "Admin") {
+                                    <a mat-menu-item routerLink="/dashboard">Administration</a>
+                                }
+                                <a mat-menu-item (click)="logOut()" class="logout-btn" >Se déconnecter</a>
+                            </mat-menu>
+                    </ul>
+                </nav>
+            }
+        </div>
+    </div>
+</header>

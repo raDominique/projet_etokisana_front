@@ -1,0 +1,49 @@
+img{
+    width: 100%;
+}
+.content-container{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    height: 100%;
+}
+h1{
+    color: rgb(0, 174, 255);
+    font-size: 3.5rem;
+    margin: 5rem auto;
+}
+.inner-container{
+    width: 70%;
+    min-width: 640px;
+}
+.slider{
+    /* background: url('/SplashscreenEtokisana.jpg') no-repeat; */
+    background-size: cover;
+    background-position: center;
+    height: 70vh;
+}
+.card-image{
+    max-width: 200px;
+    align-self: center;
+}
+.border-title{
+    width: 100%;
+}
+mat-card{
+    max-width: 200px;
+    width: max-content;
+}
+.row{
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    
+}
+.row.item{
+    align-items: center;
+}
+img.miniature{
+    border-radius : 50%;
+    width: 30px;
+    height: 30px;
+}

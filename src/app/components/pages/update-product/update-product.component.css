@@ -1,0 +1,18 @@
+.file-input{
+    display: none;
+}
+.inner-container{
+    display: flex;
+    justify-content: space-around;
+}
+.row{
+    display: flex;
+}
+.register-form-style{
+    margin-top:70px;
+}
+.autoCompleteCPC{
+    background: none;
+    width: 100%;
+    color: black;
+}

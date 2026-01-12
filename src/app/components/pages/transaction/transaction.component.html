@@ -1,0 +1,96 @@
+<app-header></app-header>
+<mat-drawer-container>
+    <!-- <mat-drawer mode="side" opened class="left-side">
+         <ul >
+            <li><button>Dépôt</button></li>
+            <li><button>Retrait</button></li> -->
+            <!-- <li><button>Achat</button></li>
+            <li><button>Vente</button></li>
+            <li><button>Historique</button></li> -->
+         <!-- </ul>
+    </mat-drawer> -->
+    <mat-drawer-content>
+        <div class="container">
+          <div class="inner-container">
+            <h1> Mes transactions</h1>
+            <!-- <a routerLink="add"><button>Ajouter un produit</button></a> --> 
+             <div class="container-operation">
+               <div class="boutonMenu">
+                <a routerLink="/choix-site/depot"><button >Acheter</button></a>
+                <a routerLink="/choix-site/retrait"><button >Vendre</button></a>
+                <!-- <a routerLink="/deposit"><button class="icon"><mat-icon class="icon-operation">swap_vert</mat-icon><br><p style="color: black;">Historique</p></button></a> -->
+               </div>
+            </div>
+
+            <table mat-table #table [dataSource]="transactionList" class="mat-elevation-z8">
+            
+                <!--- Note that these columns can be defined in any order.
+                      The actual rendered columns are set as a property on the row definition" -->
+              
+                <ng-container matColumnDef="Date">
+                  <th mat-header-cell *matHeaderCellDef> Date </th>
+                  <td mat-cell *matCellDef="let element">{{element.createdAt | date}} </td>
+                </ng-container>
+            
+            
+                <!-- Position Column -->
+                <ng-container matColumnDef="Situation">
+                  <th mat-header-cell *matHeaderCellDef> Situation </th>
+                  <td mat-cell *matCellDef="let element"> {{element.statut}} </td>
+                </ng-container>
+                <!-- <ng-container matColumnDef="Description">
+                  <th mat-header-cell *matHeaderCellDef> Description </th>
+                  <td mat-cell *matCellDef="let element"> {{element.libelle}} </td>
+                </ng-container> -->
+              
+                <!-- Name Column -->
+                <ng-container matColumnDef="Type">
+                  <th mat-header-cell *matHeaderCellDef> Type </th>
+                  <td mat-cell *matCellDef="let element"> {{element.typeES}} </td>
+                </ng-container>
+              
+                <!-- Weight Column -->
+                <ng-container matColumnDef="Montant">
+                  <th mat-header-cell *matHeaderCellDef> Montant </th>
+                  <td mat-cell *matCellDef="let element"> {{element.montantTotal}} </td>
+                </ng-container>
+                <!-- <ng-container matColumnDef="Methode">
+                  <th mat-header-cell *matHeaderCellDef> Méthode de paiement </th>
+                  <td mat-cell *matCellDef="let element"> {{element.productStock}} </td>
+                </ng-container> -->
+                <ng-container matColumnDef="Depart">
+                  <th mat-header-cell *matHeaderCellDef> Départ de  </th>
+                  <td mat-cell *matCellDef="let element"> 
+                    {{element.departOwner}} <br>
+                    {{element.siteDepart}} 
+                  </td>
+                </ng-container>
+                <ng-container matColumnDef="Arrivee">
+                  <th mat-header-cell *matHeaderCellDef> Arrivée </th>
+                  <td mat-cell *matCellDef="let element"> 
+                    {{element.arriveeOwner}} <br>
+                    {{element.siteArrivee}}</td>
+                </ng-container>
+              
+                <!-- Symbol Column -->
+                <!-- <ng-container matColumnDef="Prix Unitaire">
+                  <th mat-header-cell *matHeaderCellDef> Prix Unitaire </th>
+                  <td mat-cell *matCellDef="let element"> {{element.productPrice}} </td>
+                </ng-container> -->
+            
+                <ng-container matColumnDef="Action">
+                  <th mat-header-cell *matHeaderCellDef> Action </th>
+                  <td mat-cell *matCellDef="let element"> 
+                    <a routerLink="/transaction-details/{{element._id}}"><button> <mat-icon>eye</mat-icon> Voir</button></a>
+                    <!-- <button (click)="deleteProduct(element._id)"> <mat-icon>delete</mat-icon></button></td> -->
+                </ng-container>
+              
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+              </table>
+              
+              </div>
+            </div>
+        
+    </mat-drawer-content>
+</mat-drawer-container>

@@ -1,0 +1,79 @@
+.container{
+    padding:20px
+}
+.client-register{
+    max-width: 50%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-content: center;
+    align-items: center;
+}
+.form-line{
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+.userSite-form-style{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: space-evenly;
+    /* margin: auto 10%; */
+}
+.row{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: flex-start;
+    flex-wrap: nowrap;
+    flex-direction: row; 
+}
+app-button-default{
+    width: 100%;
+}
+.buttonContainer{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+.border-title{
+    display: flex;
+    flex-direction: row;
+}
+google-map{
+    width: 100%;
+}
+button{
+    width: 100%;
+}
+text-input{
+    width:100%;
+}
+.left-side{
+    display: flex;
+    align-content: flex-start;
+    width: 100%;
+    min-height: 80vh;
+}
+.rightSide{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    min-height: 80vh;
+    width: 100%;
+}
+.inner-container{
+    display: flex;
+    flex-direction: column;
+    align-content: flex-start;
+    align-items: flex-start;
+    height: max-content;
+    max-width: 80%;
+}
+table{
+    margin-top: 0;
+}
+.map, .map-container{
+    width: 100% !important;
+}

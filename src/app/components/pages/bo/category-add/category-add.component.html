@@ -1,0 +1,31 @@
+<app-side-bar></app-side-bar>
+<div class="container">
+    <div class="inner-container">
+        <h3>Ajouter un produit</h3>
+        <input type="file"  name="file" class="file-input" (change)="onFileSelected($event)" #productUpload>
+        <div class="options">
+            <div class="file-upload">
+                {{ fileName || "Photo de profil"}}
+                <button class="upload-btn" (click)="productUpload.click()"><mat-icon >Choisir un fichier</mat-icon></button>
+            </div>
+        </div>
+        <form class="register-form-style" [formGroup]="addCatForm"  (ngSubmit)="submit()">
+            <div class="client-register">
+            <text-input
+            [control]="fc.CatName"
+            [showErrorsWhen]="isSubmitted"
+            label="Nom de la catégie">
+            </text-input>
+            <app-textarea
+            [control]="fc.CatDescription"
+            [showErrorsWhen]="isSubmitted"
+            label="Description">
+            </app-textarea>
+             </div>
+            <div class="buttonContainer">
+                <app-default-button text="Annuler" routerLink="/user-products" type="button"></app-default-button>
+                <app-default-button text="Valider" type="submit"></app-default-button>
+            </div>
+        </form>        
+    </div>
+</div>

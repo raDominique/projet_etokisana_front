@@ -1,0 +1,17 @@
+img{
+    max-height: 30px;
+}
+mat-icon{
+    height: auto;
+    width: auto;
+}
+button:disabled{
+    background-color: rgb(196, 196, 196);
+    color: rgb(82, 82, 82);
+}
+button{
+    width: 130px;
+    margin: 5px;
+}.map{
+    width: 100%;
+}

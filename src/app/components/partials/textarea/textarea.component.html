@@ -1,0 +1,10 @@
+<input-container [label]="label" [style.fontSize]="'large'">
+    <mat-form-field appearance="outline">
+        <mat-label >{{ label }}</mat-label>
+        <textarea  matInput [placeholder]="label" [formControl]="formControl"></textarea>
+        <input-validation
+            [control]="control"
+            [showErrorsWhen]="showErrorsWhen">
+        </input-validation>
+    </mat-form-field>
+</input-container>

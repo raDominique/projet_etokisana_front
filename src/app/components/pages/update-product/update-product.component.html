@@ -1,0 +1,92 @@
+<app-header></app-header>
+<div class="container">
+    <div class="inner-container">
+        <div class="options">
+            <h3>Modifier un produit</h3>
+            <div class="file-upload">
+                <input type="file"  name="file" class="file-input" (change)="onFileSelected($event)" #productUpload>
+                <img [src]="productImage[0]" height="500px" width="500px"><br>
+                <div class="row">
+                    <img *ngIf="productImage[1]" [src]="productImage[1]" height="50px" width="50px"><br>
+                    <img *ngIf="productImage[2]" [src]="productImage[2]" height="50px" width="50px"><br>
+                    <img *ngIf="productImage[3]" [src]="productImage[3]" height="50px" width="50px"><br>
+                </div>
+                {{ fileName || "Changer l'image du produit"}}
+                <button class="upload-btn" (click)="productUpload.click()"><mat-icon >attachement</mat-icon></button>
+            </div>
+        </div>
+        <form class="register-form-style" [formGroup]="addProductForm"  (ngSubmit)="submit()">
+            <div class="client-register">
+                <div class="row">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Category</mat-label>
+                        <input type="text" 
+                        placeholder="Category"
+                        matInput 
+                        [formControl]="catCtrl"
+                        [matAutocomplete]="auto">
+                        <mat-autocomplete #auto="matAutocomplete">
+                            @for (category of filteredCat | async; track category.cpc){
+                                <button class="autoCompleteCPC" (click)="setCPC(category.cpc)" >
+                                    <mat-option [value]="category.designation" >
+                                        {{category.designation}}
+                                    </mat-option>
+                                </button>
+                                }
+                        </mat-autocomplete>
+                    </mat-form-field>        
+                    <mat-form-field appearance="outline">
+                        <mat-label style="color: black;">CPC</mat-label>
+                        <input matInput type="text" [(ngModel)]="selected" [ngModelOptions]="{standalone:true}" disabled="true">
+                    </mat-form-field>      
+                </div>
+                <text-input
+                    [control]="fc.productName"
+                    [showErrorsWhen]="isSubmitted"
+                    label="Nom du produit">
+                </text-input>
+                <app-textarea
+                    [control]="fc.productDescription"
+                    [showErrorsWhen]="isSubmitted"
+                    label="Description">
+                </app-textarea>
+                <div class="row">
+                    <text-input
+                        [control]="fc.productPoids"
+                        [showErrorsWhen]="isSubmitted"
+                        label="Poids (kg)">
+                    </text-input>
+                    <text-input
+                        [control]="fc.productVolume"
+                        [showErrorsWhen]="isSubmitted"
+                        label="Volume (L)">
+                    </text-input>
+                </div>
+                <div class="row">
+                    <text-input
+                        [control]="fc.productLargeur"
+                        [showErrorsWhen]="isSubmitted"
+                        label="Largeur (m)">
+                    </text-input>
+                    <text-input
+                        [control]="fc.productLongueur"
+                        [showErrorsWhen]="isSubmitted"
+                        label="Longueur (m)">
+                    </text-input>
+                </div>
+                
+                
+                <text-input
+                    [control]="fc.productHauteur"
+                    [showErrorsWhen]="isSubmitted"
+                    label="Hauter (m)">
+                </text-input>
+                
+            </div>
+            <div class="buttonContainer">
+                <app-default-button text="Valider" type="submit"></app-default-button>
+                <app-default-button text="Annuler" routerLink="/user-products" type="button"></app-default-button>
+            </div>
+        </form>
+    </div>
+</div>

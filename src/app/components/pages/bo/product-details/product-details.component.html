@@ -1,0 +1,66 @@
+<app-header></app-header>
+<div class="container">
+    @if (theProduct) {
+    <div class="row">
+        <div class="image-container">
+
+            
+            <img src="{{imageDisplayed}}"/>
+            <div class="row">
+                <div class="imageSelection-container">
+                    @for (image of productImage; track $index) {
+                    <button class="imageSelection" (click)="selectImage(image)" >
+                        <img [src]="image" height="150px" width="150px">
+                    </button>
+                }
+                </div>
+            </div>
+        </div>
+        
+        <div class="content-container">
+            <p>Code CPC : <span>{{theProduct.codeCPC}}</span></p>
+            <p>Categorie : <span>{{ theProduct.productCategory}}</span></p>
+            <p>Désignation : <span>{{theProduct.productName}}</span></p>
+            <mat-tab-group class="tabs">
+            <mat-tab label="Description"> {{theProduct.productDescription}} </mat-tab>
+            <mat-tab label="Caractéristique"> 
+                <div class="caracteristique-wrapper">
+                    <p class="poids"> Poids : {{theProduct.productPoids}} kg</p>
+                    <p class="volume">Volume : {{theProduct.productVolume}} </p>
+                    <p class="longueur"> Longueur : {{theProduct.productLongueur}}</p>
+                    <p class="largeur">Largeur : {{theProduct.productLargeur}} </p>
+                    <p class="hauteur"> Hauteur : {{theProduct.productHauteur}}</p>
+
+                </div>
+            </mat-tab>
+        </mat-tab-group> 
+        </div>
+    </div>
+    @if (depotInfos) {
+        <div class="row">
+            <table>
+                <tr><td style="text-align:right">Localisation :</td>
+                    <td>{{ depotInfos.siteName }} - {{ depotInfos.siteAddress }}</td>
+                </tr>
+                <tr>
+                    <td style="text-align:right">Stock disponible :</td>
+                    <td>{{ theDepotItem.stock }}</td>
+                </tr>
+                <tr>
+                    <td style="text-align:right">Prix unitaire :</td>
+                    <td><h2>{{ theDepotItem.price }}Ar</h2></td>
+                </tr>
+            </table>
+    </div>
+    }
+    
+    <div class="row">
+        @if (!theProduct.productValidation){
+            <app-default-button (click)="validateProduct(theProduct._id)" text="Approuver"></app-default-button>
+        }
+        <app-default-button (click)="addToCart(theDepotItem._id)" text="Ajouter au panier"></app-default-button>
+        <app-default-button link="/products" text="Retour"></app-default-button>
+    </div>
+    }         
+</div>
+

@@ -1,0 +1,47 @@
+<app-header></app-header>
+<div class="container">
+    <div class="inner-container">
+        <h3>Nous contacter</h3>
+        <form class="contact-form-style" [formGroup]="contactForm"  (ngSubmit)="sendEmail($event)">
+            <div class="client-register">
+            <text-input
+            [control]="fc.nom"
+            [showErrorsWhen]="isSubmitted"
+            label="Nom">
+            </text-input>
+            <text-input
+            [control]="fc.prenom"
+            [showErrorsWhen]="isSubmitted"
+            label="Prénoms">
+            </text-input>
+            <text-input
+            [control]="fc.email"
+            [showErrorsWhen]="isSubmitted"
+            label="Email">
+            </text-input>
+            <text-input
+            [control]="fc.telephone"
+            [showErrorsWhen]="isSubmitted"
+            label="Telephone">
+            </text-input>
+            <text-input
+            [control]="fc.raisonSociale"
+            [showErrorsWhen]="isSubmitted"
+            label="Raison sociale">
+            </text-input>
+            <!-- <text-input
+            [control]="fc.message"
+            [showErrorsWhen]="isSubmitted"
+            label="message">
+            </text-input>  -->
+            <app-textarea 
+            [control]="fc.message"
+            [showErrorsWhen]="isSubmitted"
+            label="Your Message..."></app-textarea>
+            </div>
+            <div class="buttonContainer">
+                <app-default-button text="Envoyer" routerLink="/home" type="submit"></app-default-button>               
+            </div>
+        </form>
+    </div>
+</div>

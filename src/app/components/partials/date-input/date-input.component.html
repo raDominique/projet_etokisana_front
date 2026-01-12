@@ -1,0 +1,15 @@
+<input-container [label]="label" [style.fontSize.px]="10">
+    <mat-form-field appearance="outline" >
+        <mat-label>{{ label }}</mat-label>
+        <input matInput #dateInput [matDatepicker]="picker" [formControl]="formControl" (onfocus)="dateInput.type ='date'" (blur)="dateInput.type ='text'"> 
+        <mat-datepicker-toggle [for]="picker" style="position: absolute;margin-top:-8px;margin-left: -10px;"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+        <input-validation
+            [control]="control"
+            [showErrorsWhen]="showErrorsWhen">
+        </input-validation>
+        <mat-error *ngIf="!formControl">
+            Ne doit pas être vide
+        </mat-error>
+    </mat-form-field>
+</input-container>

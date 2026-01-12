@@ -1,0 +1,12 @@
+<div class="radio-gender">
+    <!-- <mat-radio-group >
+      <mat-radio-button [formControl]="formControl" value="particulier" checked="checked">Particulier</mat-radio-button>
+      <mat-radio-button [formControl]="formControl" value="entreprise">Entreprise</mat-radio-button>
+    </mat-radio-group> -->
+    <input type="radio" name="userType" value="Particulier" [formControl]="formControl">Particulier
+    <input type="radio" name="userType" value="Entreprise" [formControl]="formControl">Entreprise
+    <input-validation
+            [control]="control"
+            [showErrorsWhen]="showErrorsWhen">
+    </input-validation>
+</div>

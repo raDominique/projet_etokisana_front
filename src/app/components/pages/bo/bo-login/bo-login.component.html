@@ -1,0 +1,27 @@
+
+<div class="container">
+    <div class="details">
+        <div class="logo"><img src="newlogo.png" alt="Logo etokisana"></div>
+        <!-- <h5 style="text-align:center;">Back-office</h5> -->
+        <h3>Identification</h3>
+        <form [formGroup]="loginForm" (ngSubmit)="submit()">
+            <text-input
+            [control]="fc['email']"
+            [showErrorsWhen]="isSubmitted"
+            label="Email">
+            </text-input>
+            <app-password-input
+            [control]="fc['password']"
+            [showErrorsWhen]="isSubmitted"
+            label="Mot de passe">
+            </app-password-input>
+            
+                <!-- <div style="display: flex;justify-content: center;"><a href="/forgot-password" style="margin: auto;">Mot de passe oublié?</a></div> -->
+            <div class="buttonContainer">
+                <app-default-button text="Connexion" type="submit"></app-default-button>
+                <!-- <a routerLink="/register">Inscription</a>  -->
+                <!-- <app-default-button text="Register" routerLink="/register" type="button"></app-default-button> -->
+            </div>
+        </form>
+    </div>
+</div>

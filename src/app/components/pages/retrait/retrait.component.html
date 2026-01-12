@@ -1,0 +1,25 @@
+<app-header></app-header>
+<div class="container">
+    <div class="inner-container">
+        <!-- <h3>Faire un retrait de <span *ngIf="product">{{ product.productName }}</span>chez <span *ngIf="prestataire">{{ prestataire.userName }}</span> </h3> -->
+        <h3>Faire un retrait</h3>
+        <form class="register-form-style" [formGroup]="withdrawFundForm"  (ngSubmit)="submit()">
+            <div class="client-register">
+            <text-input
+            [control]="fc.description"
+            [showErrorsWhen]="isSubmitted"
+            label="Descritpion">
+        </text-input>
+            <text-input
+            [control]="fc.montant"
+            [showErrorsWhen]="isSubmitted"
+            label="Montant">
+            </text-input>
+            </div>
+            <div class="buttonContainer">
+                <app-default-button text="Valider" routerLink="/user-products" type="submit"></app-default-button>
+                <app-default-button text="Annuler" routerLink="/user-products" type="button"></app-default-button>
+            </div>
+        </form>        
+    </div>
+</div>

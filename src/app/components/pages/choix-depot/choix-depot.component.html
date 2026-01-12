@@ -1,0 +1,69 @@
+<app-header></app-header>
+<div class="container">
+    <div class="content">
+        <!-- <button (click)="refresh()">Refresh</button> -->
+        <h1>Choix prestataire</h1>
+        <!-- <ul>
+            <li> 
+                <div class="depot-card">
+                    <ngx-avatars [src]="currentUser.userImage"></ngx-avatars>
+                    {{ currentUser.userId | uppercase}} - {{currentUser.userFirstname}} <br>
+                    0 : transactions
+                    <p for let depot of userdepot></p><button (click)="choixPrestataire(currentUser.userId)">Choisir</button>
+                </div>
+            </li>
+            <li *ngFor="let user of usersList"> 
+                <div class="depot-card">
+                    <div class="infos">
+                        <ngx-avatars [src]="user.userImage"></ngx-avatars>
+                        {{ user.userId | uppercase}} - {{user.userFirstname}} <br>
+                        0 : transactions
+                        <p for let depot of userdepot></p>
+                    </div>
+                    <button (click)="choixPrestataire(user.userID)">Déposer</button>
+                </div>
+            </li>
+        </ul> -->
+        <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+        <!--- Note that these columns can be defined in any order.
+                The actual rendered columns are set as a property on the row definition" -->
+
+        <!-- infos Column -->
+        <ng-container matColumnDef="infos">
+            <th mat-header-cell *matHeaderCellDef> Utilisateur </th>
+            <td mat-cell *matCellDef="let element"> 
+                <ngx-avatars [src]="element.image"></ngx-avatars>
+                {{element.userId | uppercase}} - {{element.name}} <br>
+                {{element.transactions}} Transactions <br>
+                <!-- {{element.reviews}}  -->
+            </td>
+        </ng-container>
+
+        <!-- dépots Column -->
+        <ng-container matColumnDef="depots">
+            <th mat-header-cell *matHeaderCellDef> Dépots </th>
+            <td mat-cell *matCellDef="let element"> 
+                @for (depot of element.depots; track $index) {
+                    <p>                
+                        <span *ngIf="element.depots">{{depot.siteName}} - {{depot.siteAddress}} <br>
+                             ( Lat : {{depot.siteLat}} - Long : {{depot.siteLng}})</span>
+                    </p>
+                }
+             </td>
+        </ng-container>
+
+        <!-- actions Column -->
+        <ng-container matColumnDef="actions">
+            <th mat-header-cell *matHeaderCellDef> Actions </th>
+            <td mat-cell *matCellDef="let element" >
+                <!-- <button (click)="choixPrestataireVente(element.userId)">Acheter</button> -->
+                <button (click)="choixPrestataireAchat(element.userId)">Choisir</button>       
+            </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns" ></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"class="tableRow" ></tr>
+        </table>
+    </div>
+</div>

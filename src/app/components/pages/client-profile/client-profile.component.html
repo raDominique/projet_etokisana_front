@@ -1,0 +1,213 @@
+<app-header></app-header>
+<div class="container">
+    <div class="main-content">
+        <div class="border-title">
+            <div class="title-border"> Profile</div>
+            <div class="profile-entete">
+                <div class="image-profile-container">
+                    <ngx-avatars [src]="profileImage" size="100"></ngx-avatars>
+                </div>
+                <div class="client-name">
+                @if (user) {
+                    <h3>ID : {{user.userId}} </h3>
+                    <h1>Bonjour {{ user.userNickName }} </h1>
+                    <h3>Solde : {{user.userTotalSolde}} </h3>
+                }
+                </div>  
+            </div>
+            @if (user && user.userType == 'Entreprise') {
+            <div  class="body-content">
+                <app-profile-item label="Email" value="{{user.userEmail}}" placeholder="{{ user.userEmail }}" dbFieldName="userEmail" userId="{{dbIdUser}}"></app-profile-item>
+                <app-profile-item label="Téléphone" value="{{user.userPhone}}" placeholder="{{ user.userPhone }}" dbFieldName="userPhone" userId="{{dbIdUser}}"></app-profile-item>
+                <app-profile-item label="Adresse" value="{{user.userAddress}}" placeholder="{{user.userAddress}}" dbFieldName="userAddress" userId="{{dbIdUser}}"></app-profile-item>
+                <app-profile-item label="Manager" value="{{user.managerName}}" placeholder="{{user.managerName}}" dbFieldName="managerName" userId="{{dbIdUser}}"> </app-profile-item>
+                <app-profile-item label="Email du manager" value="{{user.managerEmail}}" placeholder="{{user.managerEmail}}" dbFieldName="managerEmail" userId="{{dbIdUser}}"></app-profile-item>
+                <app-profile-item label="Statut" value="{{user.type}}" placeholder="{{user.type}}" dbFieldName="userType"></app-profile-item>
+                <app-profile-item label="NIF" value="{{user.nif}}" placeholder="{{user.nif}}" dbFieldName="nif"></app-profile-item>
+                <app-profile-item label="RC" value="{{user.rcs}}" placeholder="{{user.rcs}}" dbFieldName="rcs"></app-profile-item>
+                <app-profile-item label="parrain 1" value="{{user.parrain1ID}}" placeholder="{{user.parrain1ID}}" dbFieldName="parrain1ID"></app-profile-item>
+                <app-profile-item label="parrain 2" value="{{user.parrain2ID}}" placeholder="{{user.parrain2ID}}" dbFieldName="parrain2ID"></app-profile-item>
+            </div>
+            }
+            @if(user && user.userType == 'Particulier') {
+                <div class="body-content">
+                    <app-profile-item label="Nom" value="{{user.userName}}" placeholder="{{user.userName}}" dbFieldName="userName" userId="{{dbIdUser}}"></app-profile-item>
+                    <app-profile-item label="Prénoms" value="{{user.userFirstname}}" placeholder="{{user.userFirstname}}" dbFieldName="userFirstname" userId="{{dbIdUser}}"></app-profile-item>
+                    <app-profile-item label="Email" value="{{user.userEmail}}" placeholder="{{user.userEmail}}" dbFieldName="userEmail" userId="{{dbIdUser}}"></app-profile-item>
+                    <app-profile-item label="Téléphone" value="{{user.userPhone}}" placeholder="{{user.userPhone}}" dbFieldName="userPhone" userId="{{dbIdUser}}"></app-profile-item>
+                    <app-profile-item label="Adresse" value="{{user.userAddress}}" placeholder="{{user.userAddress}}" dbFieldName="userAddress" userId="{{dbIdUser}}"></app-profile-item>
+                    <app-profile-item label="parrain 1" value="{{user.parrain1ID}}" placeholder="{{user.parrain1ID}}" dbFieldName="parrain1ID"></app-profile-item>
+                <app-profile-item label="parrain 2" value="{{user.parrain2ID}}" placeholder="{{user.parrain2ID}}" dbFieldName="parrain2ID"></app-profile-item>
+                </div>
+            }
+            <!-- @if (!showSellerForm().valueOf()) {
+                <form class="register-form-style" [formGroup]="userForm"  (ngSubmit)="submitUser()">
+                    <div class="wrapper">
+                        <div class="client-register"> -->
+                            <!-- Champ photo de profil-->
+                            <!-- <div class="file-upload">
+                                <input type="file" class="file-input" (change)="onFileImageSelected($event,'profile')" #pdpUpload>
+                                <button class="upload-btn no-background" (click)="pdpUpload.click()" type="button">
+                                    @if ( profileImage != null) {
+                                        <ngx-avatars [src]="profileImage" size="100"></ngx-avatars>
+                                    }
+                                </button>
+                                <h5 style="text-align: center;">upload photo 10MB max.</h5>
+                            </div>       -->
+                            <!-- Champ Surnom-->
+                            <!-- <div class="row">
+                                <text-input
+                                    [control]="fc.userNickName"
+                                    [showErrorsWhen]="isSubmitted"
+                                    label="Pseudo">
+                                </text-input>
+                            </div> -->
+                            <!-- <div class="row"> -->
+                                <!-- Champ Nom-->
+                                <!-- <text-input
+                                    [control]="fc.userName"
+                                    [showErrorsWhen]="isSubmitted"
+                                    label="Nom">
+                                </text-input> -->
+                                <!-- Champ prénoms-->
+                                <!-- <text-input
+                                    [control]="fc.userFirstname"
+                                    [showErrorsWhen]="isSubmitted"
+                                    label="Prénoms">
+                                </text-input>
+                            </div>
+                            <div class="row"> -->
+                                <!-- Champ email-->
+                                <!-- <text-input
+                                    [control]="fc.userEmail"
+                                    [showErrorsWhen]="isSubmitted"
+                                    label="Email"
+                                    [type]="'email'">
+                                </text-input>  
+                                <input-container>
+                                    <ngx-material-intl-tel-input 
+                                        [fieldControl]="userPhone" 
+                                        [required]="false" 
+                                        [autoIpLookup]="true"
+                                        appearance='fill'
+                                        [autoSelectCountry]="true"
+                                        forceSelectedCountryCode="+261"
+                                        autoSelectedCountry='+261'                                                
+                                        [textLabels]="{
+                                            mainLabel:'',
+                                            codePlaceholder : '+261',
+                                            searchPlaceholderLabel:'rechercher',
+                                            noEntriesFoundLabel:'Téléphone',
+                                            nationalNumberLabel:'Téléphone',
+                                            hintLabel:'',
+                                            invalidNumberError:'Numéro invalide',
+                                            requiredError: 'Champ obligatoire',
+                                            }"
+                                        >
+                                    </ngx-material-intl-tel-input>
+                                </input-container>
+                            </div> 
+                            <text-input 
+                                [control]="fc.userAddress"
+                                [showErrorsWhen]="isSubmitted"
+                                label="Adresse">
+                            </text-input>
+                            <div class="row end">
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            } -->
+            <!-- Formulaire pour les entreprise-->
+             <!-- @if (showSellerForm().valueOf()) {
+                <form class="register-form-style" [formGroup]="corporateForm"  (ngSubmit)="submitUser()">
+                <div class="wrapper">
+                    <div class="client-register">
+                        <div class="file-upload">
+                            <button class="upload-btn no-background" (click)="logoUpload.click()" type="button">
+                                <ngx-avatars  size="150" [src]="images['logo']"></ngx-avatars>
+                            </button>
+                            <input type="file" class="file-input" (change)="onFileImageSelected($event,'logo')" #logoUpload>
+                            <h5 style="text-align: center;">Upload 10MB maximum</h5>
+                        </div>  
+                        <div class="row"> -->
+                            <!-- Champ raison social -->
+                            <!-- <text-input
+                                [control]="cfc.raisonSocial"
+                                [showErrorsWhen]="isSubmitted"
+                                label="Raison Sociale">
+                            </text-input>  
+                        </div>
+                        <div class="row">
+                            <text-input
+                                [control]="cfc.userNif"
+                                [showErrorsWhen]="isSubmitted"
+                                label="NIF">
+                            </text-input>
+                            <text-input
+                                [control]="cfc.userRCS"
+                                [showErrorsWhen]="isSubmitted"
+                                label="RCS">
+                            </text-input>
+                        </div>
+                        <div class="row">
+                            <text-input
+                                [control]="cfc.managerName"
+                                [showErrorsWhen]="isSubmitted"
+                                label="Gérant">
+                            </text-input>
+                            <text-input
+                                [control]="cfc.managerEmail"
+                                [showErrorsWhen]="isSubmitted"
+                                label="Email du gérant"
+                                [type]="'email'">
+                            </text-input>
+                        </div>
+                        <div class="row">
+                            <text-input
+                                [control]="cfc.contactName"
+                                [showErrorsWhen]="isSubmitted"
+                                label="Nom du représentant">
+                            </text-input>
+                            <text-input
+                                [control]="cfc.contactEmail"
+                                [showErrorsWhen]="isSubmitted"
+                                label="Email du représentant"
+                                [type]="'email'">
+                            </text-input>
+                        </div>    
+                        <ngx-material-intl-tel-input 
+                            [required]="false" 
+                            [autoIpLookup]="true"
+                            appearance='fill'
+                            [autoSelectCountry]="true"
+                            autoSelectedCountry='+261'
+                            [fieldControl]="userPhone"
+                            [preferredCountries]="['MDG']"
+                            [textLabels]="{
+                                mainLabel:'',
+                                codePlaceholder : '+261',
+                                searchPlaceholderLabel:'rechercher',
+                                noEntriesFoundLabel:'Téléphone',
+                                nationalNumberLabel:'Téléphone',
+                                hintLabel:'',
+                                invalidNumberError:'Numéro invalide',
+                                requiredError: 'Champ obligatoire',
+                                }"> 
+                        </ngx-material-intl-tel-input> -->
+                        <!-- Champ adresse du siège -->
+                        <!-- <text-input
+                            [control]="cfc.userAddress"
+                            [showErrorsWhen]="isSubmitted"
+                            label="Siège">
+                        </text-input>
+                    </div>
+                    <div class="row end">
+                        <button matButton matStepperNext type="button">Suivant</button>
+                    </div>
+                </div>
+            </form>
+            } -->
+        </div>
+    </div>
+</div>

@@ -1,0 +1,72 @@
+img{
+    max-height: 50vh;
+}
+.container{
+    display:flex;
+    flex-direction: column;
+    justify-content: space-around;
+    max-width: 70%;
+    margin: auto;
+}
+.file-input{
+    display: none;
+}
+.inner-container{
+    display: flex;
+    justify-content: space-evenly;
+}
+.row{
+    display: flex;
+    justify-content: space-evenly;
+}
+.register-form-style{
+    margin-top:70px;
+}
+.autoCompleteCPC{
+    background: none;
+    width: 100%;
+    color: black;
+}
+.tabs{
+    min-height: 30vh;
+}
+.caracteristique-wrapper{
+    display: grid;
+    margin :0 auto;
+    grid-template-columns: repeat(2,1fr);
+    grid-gap :10px;
+    grid-auto-rows: minmax(100px,auto);
+}
+.poids{
+    grid-column: 1/2;
+    grid-row: 1 ;
+}
+.volume{
+    grid-column: 2/2;
+    grid-row: 1 ;
+}
+.longueur{
+    grid-column: 1/2;
+    grid-row: 2 ;
+}
+.largeur{
+    grid-column: 2/2;
+    grid-row: 2 ;
+}
+.hauteur{
+    grid-column: 1/2;
+    grid-row: 3 ;
+}
+.imageSelection{
+    background: none;
+}
+button img{
+    object-fit: cover;
+}
+.imageSelection-container{
+    display: flex;
+    width: 100%;
+    background-color: rgb(245, 245, 245);
+    border:1px solid rgb(216, 216, 216);
+    border-radius: 30px;
+}

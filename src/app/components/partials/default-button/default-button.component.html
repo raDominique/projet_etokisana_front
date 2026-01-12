@@ -1,0 +1,28 @@
+<!-- <div class="buttonContainer"> -->
+    
+    @if(link){
+        <button
+            [disabled]="disabled"
+            [ngStyle]="{color: color,
+            'background-color':bgColor,
+            'font-size.rem':fontSizeRem,
+            'width.%':widthPer,
+            }"
+            [routerLink]="link"
+            [type]="type">
+                {{text}}
+        </button>
+    }@else {
+        <button
+            [disabled]="disabled"
+            [ngStyle]="{color: color,
+            'background-color':bgColor,
+            'font-size.rem':fontSizeRem,
+            'width.%':widthPer,
+            }"
+            [type]="type"
+            (click)="onClick.emit()">
+            {{text}}
+        </button>
+        }
+<!-- </div> -->

@@ -1,0 +1,42 @@
+.side-bar{
+    background-color: black;
+    color: white;
+    height: 100%;
+    width: fit-content;
+    margin: 0;
+    float: left;
+}
+li a {
+    font-size: larger;
+    margin: 10px;
+    /* border-bottom: 1px solid white; */
+    /* text-align: left; */
+}
+.mat-icon{
+    height: 30px;
+    width: 30px;
+}
+.material-icons{
+    font-size: 24px;
+}
+a{
+    display: flex;
+    text-decoration: none;
+    color:  white;
+    margin-top:10px;
+    padding: 10px 0 0px 10px;
+}
+.logo img{
+    width: 180px;
+    margin-right: 20px;
+}
+ul{
+    margin-block-start: 0;
+}
+a.active{
+    color:black;
+    background-color: white;
+}
+a:hover{
+    background-color: rgb(59, 59, 59);
+}

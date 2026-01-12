@@ -1,0 +1,11 @@
+<div class="side-bar">
+    <ul>
+        <li><a routerLink="/"><div class="logo"><img src="newlogo.png" alt="Logo etokisana"></div></a></li>
+        <li style="display: flex;"><h3 style="margin: 0;">{{ user.userFirstname }}</h3></li>
+        <li><a routerLink="/dashboard" routerLinkActive="active"><mat-icon>account_circle</mat-icon>Tableau de bord</a></li> 
+        <li><a routerLink="/users" routerLinkActive="active"><mat-icon>account_circle</mat-icon>Users</a></li>
+        <li><a routerLink="/products" routerLinkActive="active"><mat-icon>important_devices</mat-icon>Produits</a></li>
+        <li><a routerLink="/categories" routerLinkActive="active"><mat-icon>list</mat-icon>Catégories</a></li>
+        <li><a routerLink="/login" routerLinkActive="active" (click)="logout()"><mat-icon>input</mat-icon>Se déconnecter</a></li>
+    </ul>
+</div>

@@ -1,0 +1,11 @@
+<div class="productList">
+    <ul class="product-ul">
+        <li *ngFor="let product of productList">
+            <app-product-item 
+            imageUrl="{{product.productImage}}"
+            productName="{{product.productName}}"
+            >
+            </app-product-item>
+        </li>
+    </ul>
+</div>

@@ -1,0 +1,19 @@
+.mat-mdc-form-field{
+    font-size: small;
+    min-height: 10px;
+    padding:0px;
+}
+.mat-mdc-form-field mat-label{
+    font-size: small;
+}
+.mat-mdc-form-field-infix{
+    height: 15px;
+    min-height: 10px;
+    padding:0px;
+}
+.mdc-text-field--outlined{
+    padding: 0;
+}
+.mdc-notched-outline{
+    background-color: white;
+}

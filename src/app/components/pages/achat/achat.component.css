@@ -1,0 +1,45 @@
+mat-drawer-content{
+    min-height: 100vh ;
+}
+mat-drawer-content ul {
+    display: flex;
+    flex-wrap: wrap;
+}
+.mat-drawer-side.mat-drawer-end.right-side{
+    border-left: 1px solid black;
+    border-radius: 0;
+    padding: 10px;
+    padding-right: 20px;
+    border-left-color: black;
+    width: fit-content;
+}
+button{
+    font-size:large;
+    width: 100%;
+    text-align: right;
+    border-bottom: 1px solid black;
+    border-radius:0;
+    color: black;
+    background-color: rgba(255, 255, 255, 0);
+}
+button:active{
+    font-size:large;
+    width: 100%;
+    text-align: right;
+    border-bottom: 1px solid black;
+    border-radius:0;
+    color: black;
+    background-color: rgba(105, 95, 95, 0.164);
+}
+button:focus{
+    font-size:large;
+    width: 100%;
+    text-align: right;
+    border-bottom: 1px solid black;
+    border-radius:0;
+    color: rgb(255, 255, 255);
+    background-color: hwb(209 9% 5% / 0.473);
+}
+.left-side{
+    width: fit-content;
+}

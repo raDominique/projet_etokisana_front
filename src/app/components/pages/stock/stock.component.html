@@ -1,0 +1,9 @@
+<app-header></app-header>
+<div class="content">
+    <h1>Mon stock</h1>
+    <div class="site-component" *ngFor="let product of productInStock"></div>
+    <h3> {{theSite.siteName}} - {{theSite.siteAddress}} </h3>
+    <ul>
+        <li *ngFor="let product of productInStock"> {{product.productName}} </li>
+    </ul>
+</div>

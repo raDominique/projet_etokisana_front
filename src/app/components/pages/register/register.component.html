@@ -1,0 +1,559 @@
+<app-header></app-header>
+<div class="container">
+    <div class="inner-container">
+        <div class="focus-content">
+
+    <h3>Inscription</h3>
+        <div class="onglet" style="width: 100%;margin: auto;">
+            <mat-tab-group (selectedTabChange)="toggleSellerForm()">
+                <mat-tab label="Particuler"> 
+                </mat-tab>
+                <mat-tab label="Entreprise">
+                </mat-tab>
+            </mat-tab-group>
+        </div>
+    <!-- <button matButton="elevated" (click)="isLinear = !isLinear" id="toggle-linear">
+    {{!isLinear ? 'Enable linear mode' : 'Disable linear mode'}}
+    </button> -->
+
+
+    <!-- <div class="inner-container"> -->
+        
+        <!-- <div class="left-side"> 
+            <mat-tab-group [(selectedIndex)]="showSellerForm">
+                <mat-tab label="Particuler"> 
+                </mat-tab>
+                <mat-tab label="Entreprise">
+                </mat-tab>
+            </mat-tab-group> -->
+            <!-- <div class="client-register">
+                <div class="row">
+                    Entreprise
+                    <mat-checkbox
+                    [checked]="showSellerForm()"
+                    (change)="toggleSellerForm()">
+                    </mat-checkbox>
+                </div>
+            </div> -->
+            <form *ngIf="!showSellerForm().valueOf()" class="register-form-style" [formGroup]="registerForm">
+                <div class="wrapper">
+                    <div class="client-register">
+
+                    <mat-stepper [linear]="isLinear" #stepper>
+                        <mat-step [stepControl]="registerForm">
+                            <!-- <form [formGroup]="registerForm"> -->
+                                <ng-template matStepLabel>Renseignements généraux</ng-template>
+                                <!-- Champ photo de profil-->
+                                    <div class="file-upload">
+                                        <input type="file" class="file-input" (change)="onFileImageSelected($event,'profile')" #pdpUpload>
+                                        <button class="upload-btn no-background" (click)="pdpUpload.click()" type="button">
+                                            @if ( images['profile'] != null) {
+                                                <img class="avatar" [src]="images['profile']"/>
+                                                <!-- <ngx-avatars size="100" [src]="image" (load)="onImageLoad()">
+                                                </ngx-avatars> -->
+                                            }@if( !images['profile'] ){
+                                                <img class="avatar" [src]="images['pdpHolder']" />
+                                            }
+                                        </button>
+                                        <!-- Bar de progression -->
+                                         @if ( progress['profile']<100 && progress['profile']>0) {
+                                            <div style="margin:auto 10px;max-width: 150px;">
+                                                <mat-progress-bar mode="determinate" [value]="progress"></mat-progress-bar>
+                                                <p> {{ progress }}% </p>
+                                            </div>
+                                         }
+                                        
+                                        <h5 style="text-align: center;">upload photo 10MB max.</h5>
+                                    </div>                
+                                    
+                                    <!-- Champ Surnom-->
+                                    <div class="row">
+                                        <text-input
+                                            [control]="fc.userNickName"
+                                            [showErrorsWhen]="isSubmitted"
+                                            label="Pseudo">
+                                        </text-input>
+                                    </div>
+                                    <div class="row">
+                                        <!-- Champ Nom-->
+                                        <text-input
+                                            [control]="fc.userName"
+                                            [showErrorsWhen]="isSubmitted"
+                                            label="Nom">
+                                        </text-input>
+                                        <!-- Champ prénoms-->
+                                        <text-input
+                                            [control]="fc.userFirstname"
+                                            [showErrorsWhen]="isSubmitted"
+                                            label="Prénoms">
+                                        </text-input>
+                                    </div>
+                                    <div class="row">
+                                        <!-- Champ email-->
+                                        <text-input
+                                            [control]="fc.userEmail"
+                                            [showErrorsWhen]="isSubmitted"
+                                            label="Email"
+                                            [type]="'email'">
+                                        </text-input>  
+                                        <input-container>
+                                            <!-- <mat-form-field appearance="outline"> -->
+                                                <!-- <ngx-intl-tel-input
+                                                    formControlName="userPhone"
+                                                    name ="userPhone"
+                                                    [separateDialCode]="true"
+                                                    [cssClass]="'custom'"
+                                                    [preferredCountries]="['mg']"
+                                                    [enablePlaceholder]="true"
+                                                    [searchCountryFlag]="true"
+                                                    [selectFirstCountry]="true"
+                                                    [maxLength]="15"
+                                                    [phoneValidation]="true"
+                                                    #phone>
+                                                </ngx-intl-tel-input>               -->
+                                                <!-- <input matInput [formControl]="userPhone"> -->
+                                            <!-- </mat-form-field>                    -->
+                                                <ngx-material-intl-tel-input 
+                                                [fieldControl]="userPhone" 
+                                                [required]="false" 
+                                                [autoIpLookup]="true"
+                                                appearance='fill'
+                                                [autoSelectCountry]="true"
+                                                forceSelectedCountryCode="+261"
+                                                autoSelectedCountry='+261'                                                
+                                                [textLabels]="{
+                                                    mainLabel:'',
+                                                    codePlaceholder : '+261',
+                                                    searchPlaceholderLabel:'rechercher',
+                                                    noEntriesFoundLabel:'Téléphone',
+                                                    nationalNumberLabel:'Téléphone',
+                                                    hintLabel:'',
+                                                    invalidNumberError:'Numéro invalide',
+                                                    requiredError: 'Champ obligatoire',
+                                                    }"
+                                                >
+                                            </ngx-material-intl-tel-input>
+                                        </input-container>
+                                    </div> 
+                                    <div class="row">
+                                        <!-- Champ mot de passe-->
+                                        <app-password-input
+                                            [control]="fc.userPassword"
+                                            [showErrorsWhen]="isSubmitted"
+                                            label="Mot de passe">
+                                        </app-password-input>
+                                        <!-- Champ confirmation mot de passe -->
+                                        <app-password-input
+                                            [control]="fc.confirmPassword"
+                                            [showErrorsWhen]="isSubmitted"
+                                            label="Confirmation mot de passe">
+                                        </app-password-input>
+                                    </div>
+                                    <div class="row">
+                                        <date-input
+                                            [control]="dateOfBirth"
+                                            [showErrorsWhen]="isSubmitted"
+                                            label="Date de naissance">
+                                        </date-input>
+                                        <text-input 
+                                            [control]="fc.userAddress"
+                                            [showErrorsWhen]="isSubmitted"
+                                            label="Adresse">
+                                        </text-input>
+                                    </div>
+                                    <div class="row">
+                                    <text-input
+                                        [control]="fc.parrain1ID"
+                                        [showErrorsWhen]="isSubmitted"
+                                        label="ID parrain N°1">
+                                    </text-input>
+                                    <text-input
+                                        [control]="fc.parrain2ID"
+                                        [showErrorsWhen]="isSubmitted"
+                                        label="ID parrain N°2"
+                                        [type]="'email'">
+                                    </text-input>
+                                </div>
+                                <div class="row end">
+                                    <button matButton matStepperNext type="button">Suivant</button>
+                                </div>
+                            <!-- </form> -->
+                        </mat-step>
+                        <mat-step label="Télécharger les documents">
+                            <!-- <form [formGroup]="registerForm"> -->
+                                <div class="row" style="margin-top: 20px;margin-bottom: 5px;">
+                                    <input-container>
+                                        <mat-form-field appearance="outline"><!-- Champ document d'identification -->
+                                            <mat-label>Document d'identification</mat-label>
+                                            <mat-select matNativeControl [(value)]="documentType" >
+                                                <mat-option value="cin" selected>CIN</mat-option>
+                                                <mat-option value="passeport">Passeport</mat-option>
+                                                <mat-option value="permis">Permis de conduire</mat-option>
+                                            </mat-select>
+                                        </mat-form-field>                        
+                                    </input-container>
+                                    <text-input
+                                        [control]="fc.identityCardNumber"
+                                        [showErrorsWhen]="isSubmitted"
+                                        label="Numéro du Document">
+                                    </text-input><!-- Champ numéro du document d'identification-->
+                                </div>
+                                <div class="file-upload"><!-- Champ pour la mise en ligne des images du document d'identification-->
+                                    <!-- <p *ngIf="documentType && !identityDocument"> Photo de votre : </p> -->
+                                    <!-- Photos du document (.png,.jpg,.jepg): -->
+                                    <div class="idDocumentUpload">
+                                        <div class="recto">
+                                            <!-- {{ identityDocumentName1}} -->
+                                              <!-- Champ cachés pour la mise en ligne des images-->
+                                              <div class="row">
+                                                  <p>
+                                                      Recto*
+                                                      <input type="file" class="file-input" (change)="onFileImageSelected($event,'documentRecto')" #documentRectoUpload>
+                                                      <!-- <button class="upload-btn" (click)="documentVersoUpload.click()" type="button"><mat-icon >attach_file</mat-icon></button> -->
+                                                    </p>
+                                                </div>
+                                                <div>
+                                                    <button class="upload-document-btn no-background" (click)="documentRectoUpload.click()" type="button">
+                                                        <img *ngIf="images['documentRecto']" [src]="images['documentRecto']" alt="recto">
+                                                    </button>
+                                                    <h5 style="width: 100%;text-align: center;">Upload 10MB maximum</h5>
+                                                </div>
+                                                <!-- <mat-progress-bar *ngIf="!identityDocument[0]" mode="indeterminate"></mat-progress-bar> -->
+                                                
+                                            </div>
+                                            <div class="verso">
+                                                <div class="row">
+                                                    <!-- {{ identityDocumentName2}} <p *ngIf="!identityDocumentName2">Verso *  
+                                                    </p> -->
+                                                    <p>
+                                                        Verso*  
+                                                    <input type="file" class="file-input" (change)="onFileImageSelected($event,'documentVerso')" #documentVersoUpload>
+                                                    <!-- <button class="upload-btn"  (click)="documentVersoUpload.click()" type="button"><mat-icon >attach_file</mat-icon></button> -->
+                                                </p>
+                                            </div>
+                                            <div>
+                                                <button class="upload-document-btn no-background" (click)="documentVersoUpload.click()" type="button">
+                                                    <img  *ngIf="images['documentVerso']" [src]="images['documentVerso']" alt="">
+                                                </button>
+                                            </div>
+                                            <!-- <mat-progress-bar *ngIf="!identityDocument[1]" mode="indeterminate"></mat-progress-bar> -->
+
+                                            <div class="row">
+                                                <h5 style="width: 100%;text-align: center;">Upload 10MB maximum</h5>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>    
+                                <div class="back-forward" >
+                                    <button matButton matStepperPrevious type="button">Précédent</button>
+                                    <button matButton matStepperNext type="button">Suivant</button>
+                                </div>
+                            <!-- </form> -->
+                        </mat-step>
+                        <!-- <mat-step [stepConrtol]="localisationFormGroup"> -->
+                        <mat-step>
+                            <ng-template matStepLabel>Localisation</ng-template>
+                            <!-- <p>You are now done.</p> -->
+                            <p>Veuillez renseigner vos coordonnées géographiques :</p>
+                            <div class="localisation">
+
+                                <!-- <div class="row">
+                                </div>    -->
+                                <div class="row">
+                                    <input-container>
+                                        <mat-form-field appearance="outline">
+                                            <mat-label>Latitude</mat-label>
+                                            <input matInput type="text" [(ngModel)]="latitude" [ngModelOptions]="{standalone:true}">
+                                        </mat-form-field>
+                                    </input-container>
+                                    <input-container>
+                                        <mat-form-field appearance="outline">
+                                            <mat-label>Longitude</mat-label>
+                                            <input matInput type="text" [(ngModel)]="longitude" [ngModelOptions]="{standalone:true}">
+                                        </mat-form-field>
+                                    </input-container>
+                                </div>
+                                <google-map height="50vh"
+                                    width="100%"
+                                    [center]="center"
+                                    [zoom]="6"
+                                    (mapClick)="moveMap($event)"
+                                    >
+                                    <!-- (mapMousemove)="move($event)"  -->
+                                    <!-- *ngFor="let position of markerLatLong" -->
+                                    <map-marker 
+                                    [position]="position"></map-marker>
+                                </google-map>
+
+                                <!-- <div class="row final-row">
+                                    <div class="buttonContainer">
+                                        <div>
+                                            <button type="submit" (click)="submitUser()">S'INSCRIRE</button> -->
+                                            <!-- <app-default-button text="S'inscrire" type="submit" (onClick)="submitUser()"></app-default-button> -->
+                                        <!-- </div>
+                                        <a routerLink="/login"><p style="text-align: center;">J'ai déjà un compte</p></a>
+                                    </div>
+                                </div> -->
+                                <div class="back-forward">
+                                    <button matButton matStepperPrevious>Précédent</button>
+                                        <button type="submit" (click)="submitUser()">S'inscrire</button>
+                                        <!-- <button type="submit" (click)="submittest()" [disabled]="isSubmitDisable">Test</button> -->
+                                </div>
+                                
+                                <!-- <button matButton (click)="stepper.reset()">Reset</button> -->
+                            </div>
+                        </mat-step>
+                    </mat-stepper>
+                    </div>
+                </div>
+            </form>
+            <!-- Formulaire pour les entreprise-->
+            <form *ngIf="showSellerForm().valueOf()" class="register-form-style" [formGroup]="registerCorporateForm">
+                <div class="wrapper">
+                    <div class="client-register">
+                        <mat-stepper>
+                            <mat-step label="Renseignements généraux">
+                                <div class="file-upload">
+                                    <!-- {{ fileName || "Logo"}} -->
+                                      {{ fileName }}
+                                    <!-- <button class="upload-btn" (click)="logoUpload.click()" type="button">
+                                        <mat-icon >attach_file</mat-icon>
+                                    </button> -->
+                                    <button class="upload-btn no-background" (click)="logoUpload.click()" type="button">
+                                        <ngx-avatars  size="150" [src]="images['logo']"></ngx-avatars>
+                                    </button>
+                                    <input type="file" class="file-input" (change)="onFileImageSelected($event,'logo')" #logoUpload>
+                                    <h5 style="text-align: center;">Upload 10MB maximum</h5>
+                                </div>  
+                                <div class="row">
+                                    <!-- Champ raison social -->
+                                    <text-input
+                                        [control]="cfc.raisonSocial"
+                                        [showErrorsWhen]="isSubmitted"
+                                        label="Raison Sociale">
+                                    </text-input>
+                                    <!-- <div class="options"> -->
+                                        <!-- Champ forme de l'entreprise -->
+                                    <input-container>
+                                        <mat-form-field appearance="outline">
+                                            <mat-label>Forme juridique</mat-label>
+                                            <mat-select matNativeControl [(value)]="type" >
+                                                <mat-option value="sarl" selected>SARL</mat-option>
+                                                <mat-option value="sarlu">SARLU</mat-option>
+                                                <mat-option value="individuel">INDIVIDUEL</mat-option>
+                                                <mat-option value="sa">SA</mat-option>
+                                            </mat-select>
+                                        </mat-form-field>
+                                    </input-container>                        
+                                    <!-- </div> -->
+                                </div>
+                                <div class="row">
+                                    <text-input
+                                        [control]="cfc.nif"
+                                        [showErrorsWhen]="isSubmitted"
+                                        label="NIF">
+                                    </text-input>
+                                    <text-input
+                                        [control]="cfc.rcs"
+                                        [showErrorsWhen]="isSubmitted"
+                                        label="RCS">
+                                    </text-input>
+                                </div>
+                                <div class="row">
+                                    <text-input
+                                        [control]="cfc.managerName"
+                                        [showErrorsWhen]="isSubmitted"
+                                        label="Gérant">
+                                    </text-input>
+                                    <text-input
+                                        [control]="cfc.managerEmail"
+                                        [showErrorsWhen]="isSubmitted"
+                                        label="Email du gérant"
+                                        [type]="'email'">
+                                    </text-input>
+                                </div>
+                                <div class="row">
+                                    <text-input
+                                        [control]="cfc.contactName"
+                                        [showErrorsWhen]="isSubmitted"
+                                        label="Nom du représentant">
+                                    </text-input>
+                                    <text-input
+                                        [control]="cfc.contactEmail"
+                                        [showErrorsWhen]="isSubmitted"
+                                        label="Email du représentant"
+                                        [type]="'email'">
+                                    </text-input>
+                                </div>
+                                <div class="row">       
+                                    <!-- <input-container>
+                                        <mat-form-field appearance="outline"> -->
+                                            <!-- <ngx-intl-tel-input
+                                            formControlName="contactPhone"
+                                            name ="corporateUserPhone"
+                                            [separateDialCode]="true"
+                                            [cssClass]="'custom'"
+                                            [preferredCountries]="['mg']"
+                                            [enablePlaceholder]="true"
+                                            [searchCountryFlag]="true"
+                                            [selectFirstCountry]="true"
+                                            [maxLength]="15"
+                                            [phoneValidation]="true"
+                                            #phone>
+                                            <input matInput [formControl]="contactPhone">
+                                        </ngx-intl-tel-input>               -->
+                                    <!-- </mat-form-field>
+                                </input-container> -->
+                            <ngx-material-intl-tel-input 
+                                [required]="false" 
+                                [autoIpLookup]="true"
+                                appearance='fill'
+                                [autoSelectCountry]="true"
+                                autoSelectedCountry='+261'
+                                [fieldControl]="userPhone"
+                                [preferredCountries]="['MDG']"
+                                [textLabels]="{
+                                    mainLabel:'',
+                                    codePlaceholder : '+261',
+                                    searchPlaceholderLabel:'rechercher',
+                                    noEntriesFoundLabel:'Téléphone',
+                                    nationalNumberLabel:'Téléphone',
+                                    hintLabel:'',
+                                    invalidNumberError:'Numéro invalide',
+                                    requiredError: 'Champ obligatoire',
+                                    }"> 
+                            </ngx-material-intl-tel-input>
+                                <!-- Champ adresse du siège -->
+                                <text-input
+                                    [control]="cfc.siegeAddress"
+                                    [showErrorsWhen]="isSubmitted"
+                                    label="Siège">
+                                </text-input>
+                                </div>
+                                <div class="row">
+                                    <!-- Champ mot de passe -->
+                                    <app-password-input
+                                        [control]="cfc.userPassword"
+                                        [showErrorsWhen]="isSubmitted"
+                                        label="Mot de passe">
+                                    </app-password-input>
+                                    <!-- Champ confirmation mot de passe -->
+                                    <app-password-input
+                                        [control]="cfc.confirmPassword"
+                                        [showErrorsWhen]="isSubmitted"
+                                        label="Confirmation mot de passe">
+                                    </app-password-input>
+                                </div> 
+                                <div class="row">
+                                    <text-input
+                                        [control]="cfc.parrain1ID"
+                                        [showErrorsWhen]="isSubmitted"
+                                        label="ID parrain N°1">
+                                    </text-input>
+                                    <text-input
+                                        [control]="cfc.parrain2ID"
+                                        [showErrorsWhen]="isSubmitted"
+                                        label="ID parrain N°2"
+                                        [type]="'email'">
+                                    </text-input>
+                                </div>
+                                <div class="row end">
+                                    <button matButton matStepperNext type="button">Suivant</button>
+                                </div>
+                            </mat-step>
+                            <mat-step label="Télécharger les documents" >
+                                <div class="file-upload">
+                                    <!-- Photo de votre carte fiscale (.png,.jpg,.jepg): -->
+                                    <div class="idDocumentUpload">
+                                        <div class="recto">
+                                            <div class="row">
+                                                <p>Recto* :
+                                                    <!-- <button class="upload-btn" (click)="carteFiscalRectoUpload.click()" type="button"><mat-icon >attach_file</mat-icon></button> -->
+                                                </p>
+                                            </div>
+                                            <button class="upload-document-btn no-background" (click)="carteFiscalRectoUpload.click()" type="button">
+                                                
+                                                <input type="file" class="file-input" (change)="onFileImageSelected($event,'carteFiscaleRecto')" #carteFiscalRectoUpload>
+                                                <img [src]="images['carteFiscaleRecto']"/>
+                                            </button>
+                                            <!-- <mat-progress-bar *ngIf="!images['carteFiscaleRecto']" mode="indeterminate"></mat-progress-bar> -->
+                                            <h5 style="width: 100%;text-align: center;">Upload 10MB maximum</h5>
+                                        </div>
+                                        <div class="verso">
+                                           <div class="row">
+                                             <p>
+                                                 Verso* :
+                                                 <!-- <button class="upload-btn" (click)="carteFiscalVersoUpload.click()" type="button"><mat-icon >attach_file</mat-icon></button> -->
+                                             </p>
+                                           </div>
+                                            <button class="upload-document-btn no-background" (click)="carteFiscalVersoUpload.click()" type="button">                                    <!--  -->
+                                                <input type="file" class="file-input" (change)="onFileImageSelected($event,'carteFiscaleVerso')" #carteFiscalVersoUpload>
+                                                    <img [src]="images['carteFiscaleVerso']"/>
+                                            </button>
+                                            <!-- <mat-progress-bar *ngIf="!this.carteFiscale[1]" mode="indeterminate"></mat-progress-bar> -->
+                                            <h5 style="width: 100%;text-align: center;">Upload 10MB maximum</h5>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="back-forward">
+                                    <button matButton matStepperPrevious type="button">Précédent</button>
+                                    <button matButton matStepperNext type="button">Suivant</button>
+                                </div>
+                            </mat-step>
+                            <mat-step label="localisation" >
+                                <p>Veuillez renseigner vos coordonnées géographiques :</p>
+                            <div class="localisation">
+
+                                <!-- <div class="row">
+                                </div>    -->
+                                <div class="row">
+                                    <input-container>
+                                        <mat-form-field appearance="outline">
+                                            <mat-label>Latitude</mat-label>
+                                            <input matInput type="text" [(ngModel)]="latitude" [ngModelOptions]="{standalone:true}">
+                                        </mat-form-field>
+                                    </input-container>
+                                    <input-container>
+                                        <mat-form-field appearance="outline">
+                                            <mat-label>Longitude</mat-label>
+                                            <input matInput type="text" [(ngModel)]="longitude" [ngModelOptions]="{standalone:true}">
+                                        </mat-form-field>
+                                    </input-container>
+                                </div>
+                                <google-map height="50vh"
+                                    width="100%"
+                                    [center]="center"
+                                    [zoom]="6"
+                                    (mapClick)="moveMap($event)"
+                                    >
+                                    <!-- (mapMousemove)="move($event)"  -->
+                                    <!-- *ngFor="let position of markerLatLong" -->
+                                    <map-marker 
+                                    [position]="position"></map-marker>
+                                </google-map>
+
+                                <!-- <div class="row final-row">
+                                    <div class="buttonContainer">
+                                        <div>
+                                            <button type="submit" (click)="submitUser()">S'INSCRIRE</button> -->
+                                            <!-- <app-default-button text="S'inscrire" type="submit" (onClick)="submitUser()"></app-default-button> -->
+                                        <!-- </div>
+                                        <a routerLink="/login"><p style="text-align: center;">J'ai déjà un compte</p></a>
+                                    </div>
+                                </div> -->
+
+                                <div class="back-forward">
+                                    <button matButton matStepperPrevious type="button">Précédent</button>
+                                    <button type="submit" (click)="submitUser()" [disabled]="isSubmitDisable">S'inscrire</button>
+                                    <!-- <button type="submit" (click)="submittest()" [disabled]="isSubmitDisable">Test</button> -->
+                                </div>
+                                <!-- <button matButton (click)="stepper.reset()">Reset</button> -->
+                            </div>
+                            </mat-step>
+                        </mat-stepper>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>    
+</div>

@@ -1,0 +1,38 @@
+.main-content{
+    max-width: 1280px;
+    width: 50%;
+    margin: 10px auto;
+    padding: 15px;
+    border: 1px solid black;
+    border-radius: 15px;
+    
+}
+.profile-entete{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: flex-end;
+}
+.image-profile-container img{
+    float: left;
+    width: 150px;
+    height: 150px;
+}
+.body-content{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+
+    justify-content: space-between;
+}
+app-profile-item{
+    width: 100%;
+}
+.documentFile{
+    display: flex;
+    justify-content: space-around;
+    
+}
+.documentFile button{
+    margin: 10px;
+}

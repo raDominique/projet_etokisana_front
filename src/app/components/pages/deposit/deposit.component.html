@@ -1,0 +1,156 @@
+<app-header></app-header>
+<div class="container">
+<div class="main">
+    <div id="gridContainer">
+      <div id="listGrid">
+        @if(theProduct){
+          <div class="border-title">
+            <div class="title-border"> {{ theProduct.productName }} </div> 
+            <div class="row">
+              <div class="image-container">
+                  <img class="apercu" src="{{imageDisplayed}}"/>
+                  <div class="row imageSelection-container">
+                    @for (image of theProduct.productImage; track $index) {
+                      <button class="imageSelection" (click)="selectImage(image)">
+                        <img   [src]="image" height="100px" width="max-content"><br>
+                      </button>
+                    }
+                  </div>
+              </div>
+              <div class="details-container">
+                <p>Code CPC : <span>{{theProduct.codeCPC}}</span></p>
+                <p>Categorie : <span>{{ theProduct.productCategory}}</span></p>
+                <p>Désignation : <span>{{theProduct.productName}}</span></p>
+                <mat-tab-group class="tabs">
+                <mat-tab label="Description"> {{theProduct.productDescription}} </mat-tab>
+                <mat-tab label="Caractéristique"> 
+                    <div class="caracteristique-wrapper">
+                        <p class="poids"> Poids : {{theProduct.productPoids}} kg</p>
+                        <p class="volume">Volume : {{theProduct.productVolume}} </p>
+                        <p class="longueur"> Longueur : {{theProduct.productLongeur}}</p>
+                        <p class="largeur">Largeur : {{theProduct.productLargeur}} </p>
+                        <p class="hauteur"> Hauteur : {{theProduct.productHauteur}}</p>
+                    </div>
+                </mat-tab>
+                </mat-tab-group> 
+                <app-default-button text="Changer de produit" type="submit" (click)="changeProduct()"></app-default-button>
+              </div>
+            </div>
+          </div>
+        }
+      </div>
+      <div id="cartGrid">
+        @if (currentSite) {
+        <div class="border-title">
+          <div class="title-border"> Destination</div> 
+          <table class="depot-infos" style="border: none;border-collapse:collapse ;">
+            <tr>
+              <td>Nom du site :  </td>
+                <td>{{currentSite.siteName}}</td>
+              </tr>
+              <tr>
+                <td>Adresse :  </td>  
+                <td>{{currentSite.siteAddress}}</td>
+              </tr>
+              <tr>
+                <td>Latitude :  </td>
+                <td>{{currentSite.siteLat}}</td>
+              </tr>
+              <tr>
+                <td>Longitude :  </td>
+                <td>{{currentSite.siteLng}}</td>
+              </tr>
+              <tr>
+                <td>Propriétaire :  </td>
+                @if(siteOwner){
+                  <td>{{currentSite.siteUserID | uppercase}} - {{siteOwner.userName}} {{siteOwner.userFirstname}}</td>
+                }
+              </tr>
+              <tr>
+                <a routerLink="/depot-sites/depot/{{currentSite.siteUserID}}"><button >Autres sites</button></a>
+                @if (typeES=="stock") {
+                  <a routerLink="/choix-site/depot/"><button >Changer de prestataire</button></a>
+                }
+                
+              </tr>
+            </table>
+          </div> 
+        }
+        @if(currentItemStock && theProduct){
+          <div class="border-title">
+          <div class="title-border">Stock actuel</div>
+
+          <table class="overflow">
+              <tr class="tableRowCart tableHeader">
+                <td>Désignation</td>
+                <td>Prix Unitaire</td>
+                <td>Quantité</td>
+                <td>Montant</td>
+              </tr>
+              <tr  class="tableRowCart tableRow" style="height:10px;" >
+              <td>{{ theProduct.productName}}</td>
+              <td style="text-align: right;">
+                {{ currentItemStock.prix }}
+              </td>
+              <td>
+                {{ currentItemStock.stock }}
+              </td>
+              <td style="text-align: right;"> {{currentItemStock.prix * currentItemStock.stock}} </td>
+            </tr>
+          </table>
+        </div>
+        }
+        
+        <div class="border-title">
+            <div class="title-bordre">Valorisation du produit</div>
+                <div class="overflow">
+                    <table class="overflow">
+                    <tr class="tableRowCart tableHeader">
+                        <td>Désignation</td>
+                        <td>P.U</td>
+                        <td>Qté</td>
+                        <td>Montant</td>
+                        @if(!theProduct){
+                        <td>Actions</td>
+                        }
+                    </tr>
+                    @if (theProduct) {
+                        <tr>
+                        <td>{{ theProduct.productName }} </td>
+                        @if (currentItemStock) {
+                            <td>{{ currentItemStock.prix }}</td>
+                        }@else {
+                        <td> 
+                            <input #s class="itemQty" type="text" [(ngModel)]="itemToStock.prix" (keyup)="insertPrice(s.value)" [value]="itemToStock.prix " [ngModelOptions]="{standalone:true}"> 
+                        </td>
+                        }
+                       
+                        <td class="itemQtyContainer">
+                            <input #s class="itemQty" type="text" [(ngModel)]="itemToStock.quantity" (keyup)="insertQty(s.value)" [value]="itemToStock.quantity" [ngModelOptions]="{standalone:true}">
+                            <div class="itemQuantityButton">
+                            <button class="changeQte" (click)="qtUp()">➕</button>
+                            <button class="changeQte" (click)="qtDown(itemToStock.quantity)">➖</button>
+                            </div>
+                        </td>
+                        <td> {{montantTotal}}</td>
+                        </tr>
+                    }@else {
+                    }
+                    </table>
+                    </div>
+                    <div class="totalArea" >
+                        <div >
+                        TOTAL . . .
+                        </div>
+                        <div>
+                        {{montantTotal}}
+                        </div>
+                    </div>
+                    <div class="buttonContainer">
+                        <app-default-button text="Deposer" type="submit" (click)="submit()"></app-default-button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

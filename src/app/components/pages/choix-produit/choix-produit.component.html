@@ -1,0 +1,258 @@
+<app-header></app-header>
+<div class="container">
+    <!-- <div class="content">
+        <div class="left-side">
+            <h1>Choix du produit à {{typeES}}</h1>
+            <button (click)="NouveauProduit()" >Proposer un produit</button>
+            <ul>
+                <li *ngFor="let product of productList"> {{ product.productName }}<button (click)="choixProduit(product._id)">Choisir</button></li>
+            </ul> 
+        </div>
+        <div class="right-side">
+            <h1> Produits à déposer</h1>
+            <h4 *ngIf="!produitsAdeposer">Veuillez choisir un produit</h4>
+            <ul>
+                <li *ngFor="let product of produitsAdeposer">{{ product.productName }}</li>
+            </ul>
+            <button (click)="FaireDepot()">Valider</button>
+        </div>
+    </div> -->
+    <!-- <app-header [isLoged]="isLoged"></app-header> 
+<app-sidebar></app-sidebar> -->
+<div class="main">
+    <div id="gridContainer">
+      <div id="listGrid">
+        @if(typeES == "depot" && theProduct){
+          <div class="border-title">
+            <div class="title-border"> {{ theProduct.productName }} </div> 
+            <div class="row">
+              <div class="image-container">
+                  <img class="apercu" src="{{imageDisplayed}}"/>
+                  <div class="row imageSelection-container">
+                    @for (image of theProduct.productImage; track $index) {
+                      <button class="imageSelection" (click)="selectImage(image)">
+                        <img   [src]="image" height="100px" width="max-content"><br>
+                      </button>
+                    }
+                  </div>
+              </div>
+              
+              <div class="details-container">
+                <p>Code CPC : <span>{{theProduct.codeCPC}}</span></p>
+                <p>Categorie : <span>{{ theProduct.productCategory}}</span></p>
+                <p>Désignation : <span>{{theProduct.productName}}</span></p>
+                <mat-tab-group class="tabs">
+                <mat-tab label="Description"> {{theProduct.productDescription}} </mat-tab>
+                <mat-tab label="Caractéristique"> 
+                    <div class="caracteristique-wrapper">
+                        <p class="poids"> Poids : {{theProduct.productPoids}} kg</p>
+                        <p class="volume">Volume : {{theProduct.productVolume}} </p>
+                        <p class="longueur"> Longueur : {{theProduct.productLongeur}}</p>
+                        <p class="largeur">Largeur : {{theProduct.productLargeur}} </p>
+                        <p class="hauteur"> Hauteur : {{theProduct.productHauteur}}</p>
+
+                    </div>
+                  </mat-tab>
+                  <!-- <mat-tab label="Third"> Content 3 </mat-tab> -->
+                </mat-tab-group> 
+              </div>
+            </div>
+          </div>
+        }@else {
+          <div class="border-title">
+              <div class="title-border"> Liste des articles</div> 
+                <!-- <app-search url="vente" (updatedSearchTerm)="GetSearchTerm($event)"></app-search> -->
+                <!-- <h5 style="margin-bottom: 3px;">Filtre par catégories :</h5>
+                <select ngModel="famille" >
+                  <option  *ngFor="let famille of familles" [value]="famille.famille"> <button (click)="applyFamille(famille.famille)">{{ famille.famille }}</button> </option>
+                </select> -->
+                <!-- <li class="menu-container">
+                  <a>{{famille}}</a>
+                  <div class="menu">
+                      <a  *ngFor="let famille of familles"(click)="applyFamille(famille.famille)">{{ famille.famille }}</a>
+                  </div>
+                </li> -->
+                <!-- <ul class="category-list">
+                  <li class="categories" *ngFor="let famille of familles" ><button (click)="applyFamille(famille.famille)">{{ famille.famille }} </button></li>
+                </ul> -->
+              <!-- <h3>Liste des articles<span>📃</span></h3> -->
+              <div class="overflow">
+                <table>
+                <tr class="tableHeader">
+                  <td >Aperçu</td>
+                  <td >CPC</td>
+                  <td >Catégories</td>
+                  <td >Désignation</td>
+                  <!-- <td >Qté disponible</td> -->
+                </tr>
+                <tr class="tableRow" *ngFor="let article of articles"(click)="addToCart(article._id)">
+                  <td style="text-align: center;"> <img [src]="article.productImage[0]"/></td>
+                  <td class="list-price">{{ article.codeCPC}}</td> 
+                  <td style="text-align: center;"> {{ article.productCategory}} </td>
+                  <td >{{ article.productName}}</td>
+                </tr>
+              </table>
+              </div>
+          </div> 
+        }
+        
+        
+          <!-- <table>
+            <tr style="width: 100%;" *ngFor="let article of articles"(click)="addToCart(article.reference)">
+                <td class="destinationTd">{{ article.designation}}</td>
+                <td class="uniteTd">{{ article.unite}}</td>
+                <td >{{ article.prixUnitaireVenteTTC}}</td>
+            </tr>
+          </table> -->
+      </div>
+      <div id="cartGrid">
+        @if (currentSite) {
+        <div class="border-title">
+          <div class="title-border"> Destination</div> 
+          <table class="depot-infos" style="border: none;border-collapse:collapse ;">
+            <tr>
+              <td>Nom du site :  </td>
+                <td>{{currentSite.siteName}}</td>
+              </tr>
+              <tr>
+                <td>Adresse :  </td>  
+                <td>{{currentSite.siteAddress}}</td>
+              </tr>
+              <tr>
+                <td>Latitude :  </td>
+                <td>{{currentSite.siteLat}}</td>
+              </tr>
+              <tr>
+                <td>Longitude :  </td>
+                <td>{{currentSite.siteLng}}</td>
+              </tr>
+              <tr>
+                <td>Propriétaire :  </td>
+                @if(siteOwner){
+                  <td>{{currentSite.siteUserID | uppercase}} - {{siteOwner.userName}} {{siteOwner.userFirstname}}</td>
+                }
+              </tr>
+              <tr>
+                <a routerLink="/depot-sites/depot/{{currentSite.siteUserID}}"><button >Autres sites</button></a>
+                @if (typeES=="stock") {
+                  <a routerLink="/choix-site/depot/"><button >Changer de prestataire</button></a>
+                }
+                
+              </tr>
+            </table>
+          </div> 
+        }
+        <!-- <app-client-select [isDetail]="isDetail" [codeClient]="codeClient" [nameClient]="nameClient"  (updatedCodeClient)="GetCodeClient($event)" (updatedNameClient)="GetNameClient($event)" ></app-client-select> -->
+        <!-- <ul style="position:absolute;background-color: white;list-style: none; top: 157px;" *ngIf="showSuggestions">
+          <li *ngFor="let item of clients"><a (click)="chooseClientFromeCodeClient(item.client_code)" style="font-size: small;">{{item.client_code}} - {{ item.client_raisonSociale}}</a>  </li>
+        </ul> -->
+        @if(currentItemStock && theProduct){
+          <div class="border-title">
+          <div class="title-border">Stock actuel</div>
+
+          <table class="overflow">
+              <tr class="tableRowCart tableHeader">
+                <td>Désignation</td>
+                <td>Prix Unitaire</td>
+                <td>Quantité</td>
+                <td>Montant</td>
+              </tr>
+              <tr  class="tableRowCart tableRow" style="height:10px;" >
+              <td>{{ theProduct.productName}}</td>
+              <td style="text-align: right;">
+                {{ currentItemStock.price }}
+              </td>
+              <td>
+                {{ currentItemStock.stock }}
+              </td>
+              <td style="text-align: right;"> {{currentItemStock.price * currentItemStock.stock}} </td>
+            </tr>
+          </table>
+        </div>
+        }
+        
+        <div class="border-title">
+          <div class="title-bordre">Valorisation du produit</div>
+          <div class="overflow">
+            <table class="overflow">
+              <tr class="tableRowCart tableHeader">
+                <td>Désignation</td>
+                <td>Prix Unitaire</td>
+                <td>Quantité</td>
+                <td>Montant</td>
+                @if(!theProduct){
+                <td>Actions</td>
+                }
+              </tr>
+              @if (theProduct) {
+                <tr>
+                  <td>{{ theProduct.productName }} </td>
+                  @if (currentItemStock) {
+                    <td>{{ currentItemStock.price }}</td>
+
+                  }@else {
+
+                  }
+                  <td> 
+                    <input #s class="itemQty" type="text" [(ngModel)]="theProduct.CartItemQuantity" (keyup)="insertPrice(theProduct,s.value)" [value]="theProduct.CartItemQuantity" [ngModelOptions]="{standalone:true}"> 
+                  </td>
+                  <div class="itemQtyContainer">
+                    <input #s class="itemQty" type="text" [(ngModel)]="theProduct.CartItemQuantity" (keyup)="insertQty(theProduct,s.value)" [value]="theProduct.CartItemQuantity" [ngModelOptions]="{standalone:true}">
+                    <div class="itemQuantityButton">
+                      <button class="changeQte" (click)="qtUp(currentItemStock,currentItemStock.quantity, montantTotal)">➕</button>
+                      <button class="changeQte" (click)="qtDown(currentItemStock,currentItemStock.quantity, montantTotal)">➖</button>
+                    </div>
+                  </div>
+                  <td></td>
+                </tr>
+              }@else {
+                <tr  class="tableRowCart tableRow" style="height:10px;" *ngFor="let item of cartItems" >
+              <!-- <h1 *ngIf="isCartEmpty">Vous pouvez choisir un client puis remplir le panier</h1> -->
+              <td>{{ item.depotItem}}</td>
+              <td style="text-align: right;">
+                  <input #p class="itemQty" type="text" [(ngModel)]="item.price" (keyup)="insertPrice(item,p.value)" [value]="item.price" [ngModelOptions]="{standalone:true}">
+              </td>
+              <td>
+                  <div class="itemQtyContainer">
+                    <!-- <input #s class="itemQty" type="text" *ngIf="item.CartItemQuantity" [(ngModel)]="item.CartItemQuantity" (keyup)="insertQty(item,s.value)" [value]="item.CartItemQuantity" [ngModelOptions]="{standalone:true}"> -->
+                    <div class="itemQuantityButton">
+                      <button class="changeQte" (click)="qtUp(item,item.quantity, montantTotal)">➕</button>
+                      <button class="changeQte" (click)="qtDown(item,item.quantity, montantTotal)">➖</button>
+                    </div>
+                  </div>
+              </td>
+              <td style="text-align: right;"> {{item.montant}}</td>
+             @if(!theProductId){ 
+              <td style="width: 10%;text-align: center;">
+                @if(item.depotItem._id){
+                  <button style="background: none;border: none;" (click)="removeFromCart(item.depotItem._id)">
+                  <span style="font-size: .2rem;">🗑</span>
+                </button>
+                }
+                
+              </td>}
+            </tr>
+              }
+
+
+              
+          </table>
+          </div>
+          <div class="totalArea" *ngIf="!isCartEmpty">
+            <div >
+              TOTAL . . .
+            </div>
+            <div>
+              {{montantTotal}}
+            </div>
+          </div>
+          <div class="buttonContainer" *ngIf="!isCartEmpty">
+            <app-default-button text="Deposer" type="submit" (click)="submit()"></app-default-button>
+          @if(typeES != "depot")
+            {<app-default-button text="Vider le panier" type="button" (click)="resetCart()"></app-default-button>}
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+</div>

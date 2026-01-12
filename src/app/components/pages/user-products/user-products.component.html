@@ -1,0 +1,94 @@
+<app-header></app-header>
+<div class="container">
+  <div class="inner-container">
+    
+  <h1>Mes produits</h1>  
+  <div class="boutonMenu">
+    <a href="/client-area"><button><-Retour</button></a>
+    <a routerLink="add"><button>Ajouter un produit</button></a>
+  </div>
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+      <!--- Note that these columns can be defined in any order.
+            The actual rendered columns are set as a property on the row definition" -->
+    
+      <ng-container matColumnDef="Thumbnail">
+        <th mat-header-cell *matHeaderCellDef> Aperçu </th>
+        <td mat-cell *matCellDef="let element"><img src="{{element.productImage[0]}}"/> </td>
+      </ng-container>
+
+
+      <!-- Position Column -->
+      <ng-container matColumnDef="Nom">
+        <th mat-header-cell *matHeaderCellDef> Nom </th>
+        <td mat-cell *matCellDef="let element"> {{element.productName}} </td>
+      </ng-container>
+    
+      <!-- Name Column -->
+      <ng-container matColumnDef="Description">
+        <th mat-header-cell *matHeaderCellDef> Description </th>
+        <td mat-cell *matCellDef="let element"> {{element.productDescription}} </td>
+      </ng-container>
+    
+      <ng-container matColumnDef="Poids">
+        <th mat-header-cell *matHeaderCellDef> Poids(kg) </th>
+        <td mat-cell *matCellDef="let element"> 
+        <p *ngIf="element.productStock != 0"> {{element.productPoids}}</p>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="Volume">
+        <th mat-header-cell *matHeaderCellDef> Volume (L) </th>
+        <td mat-cell *matCellDef="let element"> 
+        <p *ngIf="element.productStock != 0"> {{element.productVolume}}</p>
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="Largeur">
+        <th mat-header-cell *matHeaderCellDef> Largeur (m) </th>
+        <td mat-cell *matCellDef="let element"> 
+        <p *ngIf="element.productStock != 0"> {{element.productLargeur}}</p>
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="Longueur">
+        <th mat-header-cell *matHeaderCellDef> Longeur (m) </th>
+        <td mat-cell *matCellDef="let element"> 
+        <p *ngIf="element.productStock != 0"> {{element.productLongueur}}</p>
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="Hauteur">
+        <th mat-header-cell *matHeaderCellDef> Hauteur (m) </th>
+        <td mat-cell *matCellDef="let element"> 
+        <p *ngIf="element.productStock != 0"> {{element.productHauteur}}</p>
+        </td>
+      </ng-container>
+    
+      <!-- Symbol Column -->
+      <ng-container matColumnDef="Statut">
+        <th mat-header-cell *matHeaderCellDef> Validation </th>
+        <td mat-cell *matCellDef="let element"> 
+          <p>{{element.productState}}</p>
+          <!-- <button *ngIf="!element.productPrice" (click)="ajouterPrix(element._id)">Ajouter</button>  -->
+        </td>
+        
+      </ng-container>
+
+      <ng-container matColumnDef="Action">
+        <th mat-header-cell *matHeaderCellDef> Action </th>
+        <td mat-cell *matCellDef="let element"> 
+          <!-- <a routerLink="update/{{element._id}}"><button type="button" [disabled]="!element.productValidation"> <mat-icon>brush</mat-icon></button></a>
+          <button (click)="deleteProduct(element._id)" type="button" [disabled]="!element.productValidation"> <mat-icon>delete</mat-icon></button></td> -->
+          <button (click)="voirProduit(element._id)"  type="button" [disabled]="!element.productValidation">Voir</button>
+          @if (!element.isStocker) {
+            <button (click)="stockerProduit(element._id)"  type="button" [disabled]="!element.productValidation">Stocker</button>
+          }@else {
+            <button (click)="deposerProduit(element._id)"  type="button" >Echanger</button>
+            <button (click)="voirStock(element._id)"  type="button" ><mat-icon>visibility</mat-icon></button>
+          }
+      </ng-container>
+    
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+      <h1 *ngIf="!dataSource[0]" style="margin: auto;text-align: center;" >Aucun produit à afficher</h1>
+  </div>
+</div>

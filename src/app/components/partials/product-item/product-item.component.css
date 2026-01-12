@@ -1,0 +1,16 @@
+.product-image-container img{
+    height: 250px;
+    width: 250px;
+    object-fit: cover;
+    
+}
+.product-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    margin: 10px;
+}
+h4, p{
+    text-align: center;
+}

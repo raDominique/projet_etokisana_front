@@ -1,0 +1,204 @@
+<app-header></app-header>
+<div class="container">
+  <div class="inner-container">
+    <div class="main">
+      <div class="border-title">
+        <div class="title-border"> En tête</div>
+        @if (transaction) {
+          <table style="font-size: large;">
+              <tr>
+                  <td>Transaction N° :</td>
+                  <td><strong>{{transactionId}}</strong></td>
+              </tr>
+              <tr>
+                  <td>Type :</td>
+                  <td><strong>{{transaction.typeES}}</strong></td>
+              </tr>
+              <tr>
+                  <td>Nombre d'articles :</td>
+                  <td><strong>{{transaction.productList.length}}</strong></td>
+              </tr>
+              <tr>
+                  <td>Montant Total :</td>
+                  <td><strong>{{transaction.montantTotal}} Ar</strong></td>
+              </tr>
+              <tr>
+                  <td>Statut :</td>
+                  <td><strong>{{transaction.statut}}</strong></td>
+              </tr>
+              <tr>
+                  <td></td>
+                  <td>
+                      @if (transaction.statut == "En cours") {
+                          <button (click)="validateTransaction(transactionId)">Terminer</button>
+                      }
+                      <button (click)="backButton()">Retour</button>
+                  </td>
+              </tr>
+          </table>
+        } 
+          
+      </div> 
+      <div id="gridContainer">
+        <div id="listGrid">
+          <div class="border-title">
+            <div class="title-border"> Dépôt de départ<span style="font-style: italic;color:red;text-transform: lowercase;font-size: small;">(Non enregistré sur la plateforme)</span></div> 
+            <table class="depot-infos" style="border: none;border-collapse:collapse ;">
+              @if (siteDepart) {                
+              <tr>
+                <td>Nom du site :  </td>
+                  <td>
+                      @if (siteDepart.siteName) {
+                          {{siteDepart.siteName}}
+                      }@else{
+                          N/A
+                      }
+                      
+                  </td>
+                </tr>
+                <tr>
+                  <td>Adresse :  </td>  
+                  <td>
+                      @if (siteDepart.siteAddress) {
+                          {{siteDepart.siteAddress}}
+                      }@else{
+                          N/A
+                      }
+                      
+                  </td>
+                </tr>
+                <tr>
+                  <td>Latitude :  </td>
+                  <td>
+                      @if (siteDepart.siteLat) {
+                          {{siteDepart.siteLat}}
+                      }@else{
+                          N/A
+                      }
+                      
+                  </td>
+                </tr>
+                <tr>
+                  <td>Longitude :  </td>
+                  <td>
+                      @if (siteDepart.siteLng) {
+                          {{siteDepart.siteLng}}
+                      }@else{
+                          N/A
+                      }
+                      
+                  </td>
+                </tr>
+                <tr>
+                  <td>Propriétaire :  </td>
+                  <td>
+                      @if (siteDepart.siteUserID) {
+                          {{siteDepart.siteUserID | uppercase}} - {{siteDepartOwner?.userName}} {{siteDepartOwner?.userFirstname}}
+                      }@else{
+                          N/A
+                      }
+                      
+                  </td>
+                </tr>
+                <!-- <tr><a href=""></a><button ></button></tr> -->
+              }
+              
+            </table>
+          </div>
+        </div>
+        <div id="cartGrid">
+          
+          <div class="border-title">
+            <div class="title-border"> Dépôt de destination</div> 
+            <table class="depot-infos" style="border: none;border-collapse:collapse ;">
+              @if (siteArrive) {
+              <tr>
+                <td>Nom du site :  </td>
+                  <td>
+                      @if (siteArrive.siteName) {
+                          {{siteArrive.siteName}}
+                      }@else{
+                          N/A
+                      }
+                  </td>
+                </tr>
+                <tr>
+                  <td>Adresse :  </td>  
+                  <td>
+                      @if (siteArrive.siteAddress) {
+                          {{siteArrive.siteAddress}}
+                      }@else{
+                          N/A
+                      }
+                  </td>
+                </tr>
+                <tr>
+                  <td>Latitude :  </td>
+                  <td>
+                      @if (siteArrive.siteLat) {
+                          {{siteArrive.siteLat}}
+                      }@else{
+                          N/A
+                      }
+                  </td>
+                </tr>
+                <tr>
+                  <td>Longitude :  </td>
+                  <td>
+                      @if (siteArrive.siteLng) {
+                          {{siteArrive.siteLng}}
+                      }@else{
+                          N/A
+                      }
+                      
+                  </td>
+                </tr>
+                <tr>
+                  <td>Propriétaire :  </td>
+                  <td>@if (siteArrive.siteUserID) {
+                          {{siteArrive.siteUserID | uppercase}} - {{siteArriveOwner?.userName}} {{siteArriveOwner?.userFirstname}}
+                      }@else{
+                          N/A
+                      }
+                  </td>
+                </tr>
+                <!-- <tr><a href=""></a><button ></button></tr> -->
+              }
+            </table>
+          </div> 
+            <!-- <div class="buttonContainer" *ngIf="!isCartEmpty"> -->
+              <!-- <app-default-button text="Payer" type="submit" (click)="submit()"></app-default-button>
+              <app-default-button text="Vider le panier" type="button" (click)="resetCart()"></app-default-button> -->
+            <!-- </div> -->
+        </div>
+      </div>
+      <div class="column">
+          <h3>Liste des articles<span>📃</span></h3>
+          <div class="overflow full-width">
+            <table>
+              <tr class="tableHeader">
+                <td>Aperçu</td>
+                <td>CPC</td>
+                <td>Catégories</td>
+                <td>Désignation</td>
+                <td>Prix Unitaire (Ar)</td>
+                <td>Quantité(Unité)</td>
+                <td>Montant(Ar)</td>
+              </tr>
+              @for (product of productList; track $index) {
+              <tr>
+                  <td ><img [src]="product.CartItemProduct.productImage[0]" alt=""></td>
+                  <td >{{product.CartItemProduct.codeCPC}}</td>
+                  <td >{{product.CartItemProduct.productCategory}} </td>
+                  <td >{{product.CartItemProduct.productName }} </td>
+                  <td> {{product.CartItemPrice}} </td>
+                  <td> {{product.CartItemQuantity}} </td>
+                  <td> {{product.CartItemMontant }} </td>
+                </tr>
+              }
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>

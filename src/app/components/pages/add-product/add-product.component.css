@@ -1,0 +1,46 @@
+.container{
+    height: 100%;
+    display: flex;
+    justify-content: center;
+}
+.file-input{
+    display: none;
+}
+.inner-container{
+    display: flex;
+    /* justify-content: space-around; */
+}
+.row{
+    display: flex;
+}
+/* .register-form-style{
+    margin-top:70px;
+} */
+.autoCompleteCPC{
+    background: none;
+    width: 100%;
+    color: black;
+}
+.options{
+    display: flex;
+    width: 100%;
+    justify-content: space-evenly;
+    align-items: center;
+    padding: auto 20px;
+}
+.upload-btn{
+    background:none;
+}
+.cpc{
+    width: 25%;
+}
+.category{
+    width: 75%;
+}
+.buttonContainer{
+    width: 100%;
+    display: flex;
+}
+app-default-button{
+    margin: 20px;
+}

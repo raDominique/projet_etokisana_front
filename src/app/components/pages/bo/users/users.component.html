@@ -1,0 +1,85 @@
+<app-side-bar></app-side-bar>
+<div class="container">
+    <div class="content">
+        <div class="head-content">
+            <h1>Utilisateurs</h1>
+        </div>
+        <div class="body-content">
+            <table mat-table [dataSource]="userslist" class="mat-elevation-z8">
+
+                <!--- Note that these columns can be defined in any order.
+                      The actual rendered columns are set as a property on the row definition" -->
+              
+                <ng-container matColumnDef="Photo">
+                  <th mat-header-cell *matHeaderCellDef> Photo </th>
+                  <td mat-cell *matCellDef="let element"><ngx-avatars [src]="element.userImage"></ngx-avatars> </td>
+                </ng-container>
+            
+                <ng-container matColumnDef="ID">
+                  <th mat-header-cell *matHeaderCellDef> ID </th>
+                  <td mat-cell *matCellDef="let element"> {{element.userId | uppercase}}</td>
+                </ng-container>
+
+                <!-- Position Column -->
+                <ng-container matColumnDef="Nom">
+                  <th mat-header-cell *matHeaderCellDef> Nom </th>
+                  <td mat-cell *matCellDef="let element"> {{element.userName }}</td>
+                </ng-container>
+              
+                <!-- Name Column -->
+                <ng-container matColumnDef="Prénoms">
+                  <th mat-header-cell *matHeaderCellDef> Prénoms </th>
+                  <td mat-cell *matCellDef="let element"> {{ element.userFirstname }} </td>
+                </ng-container>
+              
+                <!-- Weight Column -->
+                <ng-container matColumnDef="Type">
+                  <th mat-header-cell *matHeaderCellDef> Type </th>
+                  <td mat-cell *matCellDef="let element"> {{element.userType}} </td>
+                </ng-container>
+                <ng-container matColumnDef="Solde">
+                  <th mat-header-cell *matHeaderCellDef> Solde </th>
+                  <td mat-cell *matCellDef="let element"> {{element.userTotalSolde}} </td>
+                </ng-container>
+              
+                <!-- Symbol Column -->
+                <ng-container matColumnDef="Approuvé">
+                  <th mat-header-cell *matHeaderCellDef> Approuvé </th>
+                  <td mat-cell *matCellDef="let element"> <mat-checkbox [checked]="element.userValidated" (change)="onCheckBoxValidationChange(element._id)"></mat-checkbox> </td>
+                </ng-container>
+                <ng-container matColumnDef="Email">
+                  <th mat-header-cell *matHeaderCellDef> Email </th>
+                  <td mat-cell *matCellDef="let element"> {{element.userEmail}} </td>
+                </ng-container>
+
+                
+                
+                <ng-container matColumnDef="EmailVerified">
+                  <th mat-header-cell *matHeaderCellDef> Email vérifié </th>
+                  <td mat-cell *matCellDef="let element"> 
+                    <span *ngIf="element.userEmailVerified" class="verified">Vérifié</span>
+                    <span *ngIf="!element.userEmailVerified" class="pending">En attente</span>
+                   </td>
+                </ng-container>
+
+                <ng-container matColumnDef="Role">
+                  <th mat-header-cell *matHeaderCellDef> Role </th>
+                  <td mat-cell *matCellDef="let element"> {{element.userAccess}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="Action">
+                  <th mat-header-cell *matHeaderCellDef> Action </th>
+                  <td mat-cell *matCellDef="let element"> 
+                    <button (click)="CheckUser(element._id)"> <mat-icon>visibility</mat-icon></button>
+                    <button *ngIf="element.userAccess == 'Admin'" (click)="adminToUser(element._id)"> <mat-icon>supervisor_account</mat-icon></button>
+                    <button *ngIf="element.userAccess == 'Utilisateur'" (click)="userToAdmin(element._id)"> <mat-icon>supervisor_account</mat-icon></button>
+                    <button (click)="deleteUser(element._id)"> <mat-icon>delete</mat-icon></button>
+                  </td>
+                </ng-container>
+              
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+              </table>
+        </div>
+    </div>
+</div>
