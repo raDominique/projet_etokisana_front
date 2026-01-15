@@ -53,7 +53,7 @@ export class DepositComponent {
   currentItemStock : any;
   cartItemsHolder : any[]=[];
   imageDisplayed : string = "";
-  itemToStock : any;
+  itemToStock : any = { productId: '', quantity: 1, prix: 0, currentDepotId: ''}
   isLoged : boolean = true; 
 
   constructor(
@@ -164,7 +164,7 @@ export class DepositComponent {
   submit(){
     let depotItemData:DepotItem = {
       productId : this.theProductId,
-      stock: this.itemToStock.quantity,
+      stock: this.itemToStock.quantity ?? 0,
       prix   : this.itemToStock.prix,
       lastUpdate : new Date(),
       currentDepotId : this.depotId,

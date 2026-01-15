@@ -1215,3 +1215,290 @@ export const productCpc: any[] = [
     "designation": "Farmed lobsters (Homarus spp.), live, fresh or chilled "
   },
 ]
+
+export const cpcCategories: any[] = [
+  {
+    "cpc": "01953157",
+    "designation": "Products of agriculture, horticulture and market gardening"
+  },
+  {
+    "cpc": "0251850",
+    "designation": "Live animals and animal products (excluding meat)"
+  },
+  {
+    "cpc": "032811",
+    "designation": "Forestry and logging products"
+  },
+  {
+    "cpc": "0463162",
+    "designation": "Fish and other fishing products"
+  },
+  {
+    "cpc": "11155",
+    "designation": "Coal and peat"
+  },
+  {
+    "cpc": "12133",
+    "designation": "Crude petroleum and natural gas"
+  },
+  {
+    "cpc": "13111",
+    "designation": "Uranium and thorium ores and concentrates"
+  },
+  {
+    "cpc": "14266",
+    "designation": "Metal ores"
+  },
+  {
+    "cpc": "15488",
+    "designation": "Stone, sand and clay"
+  },
+  {
+    "cpc": "16388",
+    "designation": "Other minerals"
+  },
+  {
+    "cpc": "17444",
+    "designation": "Electricity, town gas, steam and hot water"
+  },
+  {
+    "cpc": "18111",
+    "designation": "Natural water"
+  },
+  {
+    "cpc": "21944161",
+    "designation": "Meat, fish, fruits, vegetables, oils and fats"
+  },
+  {
+    "cpc": "2231222",
+    "designation": "Dairy products and egg products"
+  },
+  {
+    "cpc": "2383254",
+    "designation": "Grain mill products, starches and starch products; other food products"
+  },
+  {
+    "cpc": "244911",
+    "designation": "Beverages"
+  },
+  {
+    "cpc": "25133",
+    "designation": "Tobacco products"
+  },
+  {
+    "cpc": "2685153",
+    "designation": "Yarn and thread; woven and tufted textile fabrics"
+  },
+  {
+    "cpc": "2741829",
+    "designation": "Textile articles other than apparel"
+  },
+  {
+    "cpc": "2831130",
+    "designation": "Knitted or crocheted fabrics; wearing apparel"
+  },
+  {
+    "cpc": "2961717",
+    "designation": "Leather and leather products; footwear"
+  },
+  {
+    "cpc": "3181834",
+    "designation": "Products of wood, cork, straw and plaiting materials"
+  },
+  {
+    "cpc": "3282551",
+    "designation": "Pulp, paper and paper products; printed matter and related articles"
+  },
+  {
+    "cpc": "3372023",
+    "designation": "Coke oven products; refined petroleum products; nuclear fuel"
+  },
+  {
+    "cpc": "3484168",
+    "designation": "Basic chemicals"
+  },
+  {
+    "cpc": "3552935",
+    "designation": "Other chemical products; man-made fibres"
+  },
+  {
+    "cpc": "3652429",
+    "designation": "Rubber and plastics products"
+  },
+  {
+    "cpc": "3773451",
+    "designation": "Glass and glass products and other non-metallic products n.e.c."
+  },
+  {
+    "cpc": "3884164",
+    "designation": "Furniture; other transportable goods n.e.c."
+  },
+  {
+    "cpc": "3943151",
+    "designation": "Wastes or scraps"
+  },
+  {
+    "cpc": "4162590",
+    "designation": "Basic metals"
+  },
+  {
+    "cpc": "4241536",
+    "designation": "Fabricated metal products, except machinery and equipment"
+  },
+  {
+    "cpc": "4362860",
+    "designation": "General-purpose machinery"
+  },
+  {
+    "cpc": "44936118",
+    "designation": "Special-purpose machinery"
+  },
+  {
+    "cpc": "4521524",
+    "designation": "Office, accounting and computing machinery"
+  },
+  {
+    "cpc": "4662337",
+    "designation": "Electrical machinery and apparatus"
+  },
+  {
+    "cpc": "4782446",
+    "designation": "Radio, television and communication equipment and apparatus"
+  },
+  {
+    "cpc": "4842456",
+    "designation": "Medical appliances, precision and optical instruments, watches and clocks"
+  },
+  {
+    "cpc": "4972248",
+    "designation": "Transport equipment"
+  },
+  {
+    "cpc": "5321024",
+    "designation": "Constructions"
+  },
+  {
+    "cpc": "5473761",
+    "designation": "Construction services"
+  },
+  {
+    "cpc": "61218120",
+    "designation": "Wholesale trade services"
+  },
+  {
+    "cpc": "62545269",
+    "designation": "Retail trade services"
+  },
+  {
+    "cpc": "6341016",
+    "designation": "Accommodation, food and beverage services"
+  },
+  {
+    "cpc": "642828",
+    "designation": "Passenger transport services"
+  },
+  {
+    "cpc": "653728",
+    "designation": "Freight transport services"
+  },
+  {
+    "cpc": "66138",
+    "designation": "Rental services of transport vehicles with operators"
+  },
+  {
+    "cpc": "6772225",
+    "designation": "Supporting transport services"
+  },
+  {
+    "cpc": "68137",
+    "designation": "Postal and courier services"
+  },
+  {
+    "cpc": "69256",
+    "designation": "Electricity, gas and water distribution (on own account)"
+  },
+  {
+    "cpc": "7172457",
+    "designation": "Financial and related services"
+  },
+  {
+    "cpc": "722714",
+    "designation": "Real estate services"
+  },
+  {
+    "cpc": "7331628",
+    "designation": "Leasing or rental services without operator"
+  },
+  {
+    "cpc": "814840",
+    "designation": "Research and development services"
+  },
+  {
+    "cpc": "824912",
+    "designation": "Legal and accounting services"
+  },
+  {
+    "cpc": "8393380",
+    "designation": "Professional, technical and business services (except research, development, legal and accounting services)"
+  },
+  {
+    "cpc": "8462138",
+    "designation": "Telecommunications, broadcasting and information supply services"
+  },
+  {
+    "cpc": "8562747",
+    "designation": "Support services"
+  },
+  {
+    "cpc": "8631225",
+    "designation": "Support and operation services to agriculture, hunting, forestry, fishing, mining and utilities"
+  },
+  {
+    "cpc": "8731729",
+    "designation": "Maintenance, repair and installation (except construction) services"
+  },
+  {
+    "cpc": "88931125",
+    "designation": "Manufacturing services on physical inputs owned by others"
+  },
+  {
+    "cpc": "894810",
+    "designation": "Other manufacturing services; publishing, printing and reproduction services; materials recovery services"
+  },
+  {
+    "cpc": "9131732",
+    "designation": "Public administration and other services provided to the community as a whole; compulsory social security services"
+  },
+  {
+    "cpc": "9261214",
+    "designation": "Education services"
+  },
+  {
+    "cpc": "9351232",
+    "designation": "Human health and social care services"
+  },
+  {
+    "cpc": "9461528",
+    "designation": "Sewage and waste collection, treatment and disposal and other environmental protection services"
+  },
+  {
+    "cpc": "953614",
+    "designation": "Services of membership organizations"
+  },
+  {
+    "cpc": "9672338",
+    "designation": "Recreational, cultural and sporting services"
+  },
+  {
+    "cpc": "9741313",
+    "designation": "Other services"
+  },
+  {
+    "cpc": "98111",
+    "designation": "Domestic services"
+  },
+  {
+    "cpc": "99111",
+    "designation": "Services provided by extraterritorial organizations and bodies"
+  }
+]

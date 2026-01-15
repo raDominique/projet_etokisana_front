@@ -74,6 +74,7 @@ const routes: Routes = [
     {path : 'depot-sites/:typeES/:id/:productId' , component:DepotSitesComponent},
     {path : 'choix-produit/:typeES/:id/:productId' , component:ChoixProduitComponent},
     {path : 'transaction-details/:id' , component:TransactionDetailsComponent},
+    {path: 'products-passif', loadComponent: () => import('./components/pages/product-passif/product-passif').then(m => m.ProductPassif)},
     {path : '**', component: NotFoundComponent},
 ];
 
