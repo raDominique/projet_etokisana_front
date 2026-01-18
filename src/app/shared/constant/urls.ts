@@ -1,9 +1,10 @@
-// const BASE_URL = 'http://localhost:3000'; // localy ok 30/12/2025
 // const BASE_URL = 'https://etokisana-back.onrender.com' // pre prod Render server
 // const BASE_URL = 'https://noisy-fayre-dandry-0b996820.koyeb.app' // pre prod on Koyeb server
-const BASE_URL = 'https://backend.commercegestion.com'; // prod
 // const BASE_URL = 'https://etokisanabackend.onrender.com';
 // const BASE_URL = 'https://ids.creation-sen.mg'; // prod v2
+
+const BASE_URL = 'http://localhost:3000'; // localy ok 30/12/2025
+// const BASE_URL = 'https://backend.commercegestion.com'; // prod
 
 export const PRODUCT_URL                                    = BASE_URL + '/api/product/';
 export const PRODUCT_BY_ID_URL                              = PRODUCT_URL + 'id/';

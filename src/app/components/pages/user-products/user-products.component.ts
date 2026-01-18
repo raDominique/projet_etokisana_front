@@ -60,7 +60,7 @@ export class UserProductsComponent implements OnInit{
     this.router.navigateByUrl('/product-page/'+productId)
   }
   stockerProduit(productId : string){
-    this.router.navigateByUrl('/choix-site/depot/'+this.OwnerId)
+    this.router.navigateByUrl('/choix-site/depot/'+this.OwnerId+"/"+productId)
   }
   retirerProduit(id : string){
     this.router.navigateByUrl('choix-site/retrait')

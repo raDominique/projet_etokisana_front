@@ -40,6 +40,7 @@ export class ChoixDepotComponent  implements OnInit{
   currentUser: any;
   usersList : any;
   typeES !: string;
+  productId !: any;
   constructor(
     private userService : UserService,
     private router : Router,
@@ -50,6 +51,7 @@ export class ChoixDepotComponent  implements OnInit{
     
     this.activatedRoute.params.subscribe(params=>{
       this.typeES = params['typeES'];
+      this.productId = params['productId'];
       console.log(this.typeES)
     })
 
@@ -95,10 +97,10 @@ export class ChoixDepotComponent  implements OnInit{
   ngOnInit(): void {
   }
   choixPrestataireAchat(prestataireId : string){
-      this.router.navigateByUrl("/depot-sites/"+this.typeES+"/"+prestataireId)      
+      this.router.navigateByUrl("/depot-sites/"+this.typeES+"/"+prestataireId+"/"+this.productId)      
   }
   choixPrestataireVente(prestataireId : string){
     this.typeES = "achat"
-      this.router.navigateByUrl("/depot-sites/"+this.typeES+"/"+prestataireId)      
+      this.router.navigateByUrl("/depot-sites/"+this.typeES+"/"+prestataireId+"/"+this.productId)      
   }
 }
