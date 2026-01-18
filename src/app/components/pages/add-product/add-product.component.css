@@ -10,6 +10,11 @@
     display: flex;
     /* justify-content: space-around; */
 }
+.autoCompleteCPC{
+    font-size: 5px;
+    margin : 0;
+    padding: 0;
+}
 .row{
     display: flex;
 }
@@ -20,6 +25,9 @@
     background: none;
     width: 100%;
     color: black;
+}
+.mat-mdc-option{
+    min-height: 10px;
 }
 .options{
     display: flex;

@@ -3,13 +3,13 @@
     <div class="row">
         <div class="image-container">
             <img class=mainImage src="{{imageDisplayed}}"/>
-            <div class="row">
+            <!-- <div class="row">
                 @for (image of productImage; track $index) {
                     <button class="imageSelection" (click)="selectImage(image)">
                         <img [src]="image" height="150px" width="150px"><br>
                     </button>
                 }
-            </div>
+            </div> -->
         </div>
         <div class="content-container">
             @if (theProduct) {
@@ -33,47 +33,50 @@
             <!-- <mat-tab label="Third"> Content 3 </mat-tab> -->
         </div>
     </div>
-    @if (userDepotList) {
-        <table style="margin : 0px;">
-            <tr>
-                <td>Site</td>
-                <td>Stock</td>
-                <td>Prix</td>
-                <td>Valeur Totale</td>
-                <td>Actions</td>
-            </tr>
-        @for (site of depotItemData; track $index) {
-            <tr>
-                <td>{{ site.site }}</td>
-                <td> {{site.stock}} </td>
-                <td> {{site.price}} </td>
-                <td> @if(site.stock !=0){ {{site.total}} }@else{0} </td>
-                <td> @if(site.stock != 0){<button (click)="deleteDepotItem(site.depotItemId)"> <mat-icon>delete</mat-icon> </button> } </td>
-            </tr>
-            }
-        </table>
-    }
-    @if (currentStock && currentStock.length > 0) {
-        <h2>Informations de stock</h2>
-        @for (depotItem of currentStock; track $index) {
-            <div class="row">
-                <table>
-                    <tr>
-                        <td>Stock : </td>
-                        <td> {{ depotItem.stock }} </td>
-                    </tr>
-                    <tr>
-                        <td>Prix unitaire : </td>
-                        <td> {{ depotItem.prix }} </td>
-                    </tr>
-                    <tr>
-                        <td>Depot : </td>
-                        <td> {{ depotItem.currentDepotId }} </td>
-                    </tr>
-                </table>
-            </div>
+    <div class="row">
+
+        @if (userDepotList) {
+            <table style="margin : 0px;">
+                <tr class="table-header">
+                    <td>Site</td>
+                    <td>Stock</td>
+                    <td>Prix</td>
+                    <td>Valeur Totale</td>
+                    <td>Actions</td>
+                </tr>
+            @for (site of depotItemData; track $index) {
+                <tr>
+                    <td>{{ site.site }}</td>
+                    <td> {{site.stock}} </td>
+                    <td> {{site.price}} </td>
+                    <td> @if(site.stock !=0){ {{site.total}} }@else{0} </td>
+                    <td> @if(site.stock != 0){<button (click)="deleteDepotItem(site.depotItemId)"> <mat-icon>delete</mat-icon> </button> } </td>
+                </tr>
+                }
+            </table>
         }
-    }
+        @if (currentStock && currentStock.length > 0) {
+            <h2>Informations de stock</h2>
+            @for (depotItem of currentStock; track $index) {
+                <div class="row">
+                    <table>
+                        <tr>
+                            <td>Stock : </td>
+                            <td> {{ depotItem.stock }} </td>
+                        </tr>
+                        <tr>
+                            <td>Prix unitaire : </td>
+                            <td> {{ depotItem.prix }} </td>
+                        </tr>
+                        <tr>
+                            <td>Depot : </td>
+                            <td> {{ depotItem.currentDepotId }} </td>
+                        </tr>
+                    </table>
+                </div>
+            }
+        }
+    </div>
     
     <div class="row">
         @if (userAccess == 'Admin') {

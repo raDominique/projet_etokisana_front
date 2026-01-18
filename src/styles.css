@@ -14,6 +14,7 @@ body{
       width: 90%;
       margin: auto;
   }
+
   .content{
     display: flex;
     flex-direction: column;
@@ -28,6 +29,9 @@ body{
   .mat-mdc
   .row{
     width: 100%;
+  }
+  .mat-mdc-form-field mat-label{
+    font-size : 18px;
   }
   .row{
     display: flex;
@@ -400,6 +404,7 @@ input-validation{
 
 app-default-button{
   width: 100%;
+  margin : 1px 16px;
 }
 :root{
   --mdc-outline-tel-form-background: #ffffff;
