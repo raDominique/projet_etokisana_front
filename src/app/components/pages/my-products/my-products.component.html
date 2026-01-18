@@ -1,0 +1,80 @@
+<app-header></app-header>
+<div class="container">
+  <div class="inner-container">
+    
+  <h2>Mes Actifs</h2>  
+  <div class="boutonMenu">
+    <a href="/client-area"><button>Retour</button></a>
+    <a routerLink="/user-products"><button>Ajouter un produit</button></a>
+  </div>
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+      <!--- Note that these columns can be defined in any order.
+            The actual rendered columns are set as a property on the row definition" -->
+    
+      <ng-container matColumnDef="Thumbnail">
+        <th mat-header-cell *matHeaderCellDef> Aperçu </th>
+        <td mat-cell *matCellDef="let element"><img src="{{element.productId.productImage[0]}}"/> </td>
+      </ng-container>
+
+
+      <!-- Position Column -->
+      <ng-container matColumnDef="Nom">
+        <th mat-header-cell *matHeaderCellDef> Produit </th>
+        <td mat-cell *matCellDef="let element"> {{element.productId.productName}} </td>
+      </ng-container>
+    
+      <!-- Description Column -->
+      <ng-container matColumnDef="Description">
+        <th mat-header-cell *matHeaderCellDef> Description </th>
+        <td mat-cell *matCellDef="let element"> {{element.productId.productDescription}} </td>
+      </ng-container>
+    
+      <!-- Price Column -->
+      <ng-container matColumnDef="Prix">
+        <th mat-header-cell *matHeaderCellDef> Prix </th>
+        <td mat-cell *matCellDef="let element"> 
+          <p>{{element.prix}}</p>
+          <!-- <button *ngIf="!element.productPrice" (click)="ajouterPrix(element._id)">Ajouter</button>  -->
+        </td>
+      </ng-container>
+
+      <!-- Quantity Column -->
+      <ng-container matColumnDef="Quantite">
+        <th mat-header-cell *matHeaderCellDef> Quantité </th>
+        <td mat-cell *matCellDef="let element"> 
+          <p>{{element.stock}}</p>
+          <!-- <button *ngIf="!element.productPrice" (click)="ajouterPrix(element._id)">Ajouter</button>  -->
+        </td>
+      </ng-container>
+
+      <!-- Depot Column -->
+      <ng-container matColumnDef="Depot">
+        <th mat-header-cell *matHeaderCellDef> Depot </th>
+        <td mat-cell *matCellDef="let element"> 
+          <p>{{element.currentDepotId.siteAddress}}</p>
+          <!-- <button *ngIf="!element.productPrice" (click)="ajouterPrix(element._id)">Ajouter</button>  -->
+        </td>        
+      </ng-container>    
+      
+
+      <ng-container matColumnDef="Action">
+        <th mat-header-cell *matHeaderCellDef> Action </th>
+        <td mat-cell *matCellDef="let element"> 
+          <!-- <a routerLink="update/{{element._id}}"><button type="button" [disabled]="!element.productValidation"> <mat-icon>brush</mat-icon></button></a>
+          <button (click)="deleteProduct(element._id)" type="button" [disabled]="!element.productValidation"> <mat-icon>delete</mat-icon></button></td> -->
+          <button (click)="voirProduit(element.productId._id)"  type="button" [disabled]="!element.productId.productValidation">Voir</button>
+          @if (!element.productId.isStocker) {
+            <button (click)="stockerProduit(element.productId._id)"  type="button" [disabled]="!element.productId.productValidation">Stocker</button>
+          }@else {
+            <button (click)="deposerProduit(element.productId._id)"  type="button" >Echanger</button>
+            <!-- <button (click)="voirStock(element._id)"  type="button" ><mat-icon>visibility</mat-icon></button> -->
+          }
+      </ng-container>
+    
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+      <h1 *ngIf="!dataSource[0]" style="margin: auto;text-align: center;" >Aucun produit à afficher</h1>
+  </div>
+</div>

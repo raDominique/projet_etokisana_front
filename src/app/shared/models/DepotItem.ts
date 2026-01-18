@@ -7,4 +7,5 @@ export class DepotItem{
     prix           !: number;
     lastUpdate      !: Date;
     currentDepotId  !: string;
+    currentOwnerId !: string;
 }

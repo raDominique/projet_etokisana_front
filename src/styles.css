@@ -31,7 +31,7 @@ body{
     width: 100%;
   }
   .mat-mdc-form-field mat-label{
-    font-size : 18px;
+    font-size : .85rem;
   }
   .row{
     display: flex;
@@ -124,6 +124,13 @@ body{
     padding:0.5rem 0;
     text-transform: uppercase;
   }
+
+h2{
+  text-align: center;  
+  margin: auto;
+  color: rgba(24, 119, 242);
+}
+
   h1{
     margin: auto;
     color : rgba(24, 119, 242);
@@ -416,6 +423,7 @@ app-default-button{
 .number-form-field{
   border:none;
 }
+
 /* boutonMenu{
   display: flex;
   justify-content: space-between;

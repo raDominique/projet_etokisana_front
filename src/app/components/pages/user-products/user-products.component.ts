@@ -53,8 +53,8 @@ export class UserProductsComponent implements OnInit{
   ajouterPrix(id : string){
     this.router.navigateByUrl('user-products/update/'+id)
   }
-  deposerProduit(id : string){
-    this.router.navigateByUrl('choix-site/depot')
+  deposerProduit(productId : string){
+      this.router.navigateByUrl('choix-site/depot/'+this.OwnerId+"/"+productId)
   }
   voirProduit(productId : string){
     this.router.navigateByUrl('/product-page/'+productId)

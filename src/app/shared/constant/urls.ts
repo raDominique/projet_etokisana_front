@@ -1,10 +1,5 @@
-// const BASE_URL = 'https://etokisana-back.onrender.com' // pre prod Render server
-// const BASE_URL = 'https://noisy-fayre-dandry-0b996820.koyeb.app' // pre prod on Koyeb server
-// const BASE_URL = 'https://etokisanabackend.onrender.com';
-// const BASE_URL = 'https://ids.creation-sen.mg'; // prod v2
-
-const BASE_URL = 'http://localhost:3000'; // localy ok 30/12/2025
-// const BASE_URL = 'https://backend.commercegestion.com'; // prod
+// const BASE_URL = 'http://localhost:3000'; // localy ok 30/12/2025
+const BASE_URL = 'https://backend.commercegestion.com'; // prod
 
 export const PRODUCT_URL                                    = BASE_URL + '/api/product/';
 export const PRODUCT_BY_ID_URL                              = PRODUCT_URL + 'id/';
@@ -20,7 +15,6 @@ export const PRODUCT_BY_SITE_ID_URL                         = PRODUCT_URL + 'sto
 export const PRODUCT_ADD_TO_STOCK_URL                       = PRODUCT_URL + 'addStock/';
 export const PRODUCT_MODIFY_STOCK_URL                       = PRODUCT_URL + 'modififyStock/';
 
-// export const UPLOAD_IMAGE_URL                               = PRODUCT_URL + 'upload-image/';
 export const UPLOAD_IMAGE_URL                               = BASE_URL + '/api/upload/image/';
 
 export const DEPOTITEM_URL                                  = BASE_URL + '/api/depotItem/';
@@ -32,7 +26,8 @@ export const DEPOTITEM_DELETE_DEPOT_ITEM_BY_PRODCUT_ID_URL  = DEPOTITEM_URL + 'd
 export const DEPOTITEM_DELETE_DEPOT_ITEM_URL                = DEPOTITEM_URL + 'delete/';
 export const DEPOTITEM_BY_PRODUCT_ID_URL                    = DEPOTITEM_URL + 'ByProductId/'
 export const DEPOTITEM_GET_STOCK_URL                        = DEPOTITEM_URL + 'getStock/'
-export const DEPOT_ITEM_WITH_PRODUCT_INFO_URL               = DEPOTITEM_URL + 'productinfos/'
+export const DEPOTITEM_WITH_PRODUCT_INFO_URL               = DEPOTITEM_URL + 'productinfos/'
+export const DEPOTITEM_BY_USERID_URL                        = DEPOTITEM_URL + 'myproducts/'
 
 
 export const NOTIFICATION_URL                   = BASE_URL + '/api/notification/';

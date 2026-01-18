@@ -467,6 +467,7 @@ submit(){
           prix   : cartItem.price,
           lastUpdate : new Date(),
           currentDepotId : this.depotId,
+          currentOwnerId : this.currentUser._id,
         }
         this.depotItemService.getAllByProductId(depotItempData.productId).subscribe(depotItemsByProductId =>{
           this.depotItemStock = depotItemsByProductId;

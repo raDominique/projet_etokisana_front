@@ -22,11 +22,14 @@ a {
     padding: auto 20px;
 }
 .container{
+    background-color: rgb(226, 223, 221);
     height: 100%;
     display: flex;
     justify-content: center;
 }
 text-input, app-password-input{
+    font-style: italic;
+    font-weight: lighter;
     width:100%;
 }
 /* div.border-title{
@@ -40,9 +43,15 @@ text-input, app-password-input{
     margin-bottom: 20px;
  }
  .border-title{
-    width: 25%;
+    background-color: white;
+    width: 20%;
  }
  .title-border{
     font-size:x-large;
     margin-top: -2.5rem;
+ }
+ .button-register{
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
  }

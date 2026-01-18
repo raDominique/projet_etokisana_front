@@ -163,6 +163,7 @@ export class DepositComponent {
 
   submit(){
     let depotItemData:DepotItem = {
+      currentOwnerId : this.currentUser._id,
       productId : this.theProductId,
       stock: this.itemToStock.quantity,
       prix   : this.itemToStock.prix,
