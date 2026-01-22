@@ -10,6 +10,7 @@
             <h2>Connexion</h2>
             <form class="login-form" [formGroup]="loginForm" (ngSubmit)="submit()">
                 <text-input
+                    [autoFocus]="true"
                     [control]="fc.email"
                     [showErrorsWhen]="isSubmitted"
                     label="Email">
