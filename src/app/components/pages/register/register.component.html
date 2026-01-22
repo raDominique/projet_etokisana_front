@@ -69,6 +69,7 @@
                                     <!-- Champ Surnom-->
                                     <div class="row">
                                         <text-input
+                                            [autoFocus]="true"
                                             [control]="fc.userNickName"
                                             [showErrorsWhen]="isSubmitted"
                                             label="Pseudo">
@@ -328,6 +329,7 @@
                                 <div class="row">
                                     <!-- Champ raison social -->
                                     <text-input
+                                        [autoFocus]="true"
                                         [control]="cfc.raisonSocial"
                                         [showErrorsWhen]="isSubmitted"
                                         label="Raison Sociale">
