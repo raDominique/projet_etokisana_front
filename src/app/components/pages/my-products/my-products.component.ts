@@ -29,7 +29,6 @@ export class MyProductsComponent implements OnInit{
     'Thumbnail',
     'Nom', 
     'Description',
-    'Prix',
     'Quantite',
     'Depot',
     'Action'
