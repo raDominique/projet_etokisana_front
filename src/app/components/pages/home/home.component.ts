@@ -1,10 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { DefaultButtonComponent } from '../../partials/default-button/default-button.component';
 import { Router, RouterLink } from '@angular/router';
 import { HeaderComponent } from '../../partials/header/header.component';
 import { ProductService } from 'src/app/services/product.service';
 // import { DepotItem } from 'src/app/shared/models/DepotItem';
 import {MatCardModule} from '@angular/material/card';
+import {MatGridListModule} from '@angular/material/grid-list';
 import { DepotItemService } from 'src/app/services/depot-item.service';
 import { CartService } from 'src/app/services/cart.service';
 import { NotificationService } from 'src/app/services/notification.service';
@@ -16,16 +17,29 @@ import { Cart } from 'src/app/shared/models/Cart';
   imports: [
     HeaderComponent,
     MatCardModule,
+    MatGridListModule
   ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
-export class HomeComponent {
+export class HomeComponent implements OnInit {
   cart:Cart  = new Cart();
   depotItems:any[] = [];
   depotItemList : any [] = [];
   productList: any[]=[];
   cartList : any[] = [];
+  cols: number = 5;
+
+  @HostListener('window:resize')
+  onResize() {
+    const width = window.innerWidth;
+    if (width < 600) this.cols = 1;
+    else if (width < 900) this.cols = 2;
+    else if (width < 1200) this.cols = 3;
+    else if (width < 1500) this.cols = 4;
+    else this.cols = 5;
+  }
+
   constructor(
     private router:Router,
     private productservice:ProductService,
@@ -64,6 +78,11 @@ export class HomeComponent {
       })
     })
   }
+
+  ngOnInit(): void {
+    this.onResize();
+  }
+
   registerbutton(){
       this.router.navigateByUrl('achat')
       console.log("hit the button")
